@@ -45,7 +45,7 @@ personas puedan verlas.
 ## Endpoints
 
 ​
-User:​
+--User:​
 
 -   POST [/user] - Registro de usuario
     ​
@@ -58,11 +58,8 @@ User:​
 -   PUT: [/email] para modificar el email **TOKEN**
     ​
 -   PUT: [/password] para modificar la contraseña **TOKEN**
-    ​
 
-Opinions:
-
-    ​
+--Opinions:
 
 -   POST:[/Opinions] Escribir una Opinión **TOKEN**
     ​

@@ -26,7 +26,7 @@ Crear token de usuarios
 ## Entidades
 
 ​
-User Register:
+--User Register
 ​
 -idUser
 -email
@@ -34,39 +34,41 @@ User Register:
 -createdAt
 -modifiAd
 ​
-Opinions
+--Opinions
+
 -id
 -idUser
 -text
 -createdAt
 -modifiAd
+
 ​
 
 ## Endpoints
 
 ​
-User:
+--User:
 ​
-POST [/user] - Registro de usuario
+●POST [/user] - Registro de usuario
 ​
-GET [/user/:id] - Devuelve información de usuario
+●GET [/user/:id] - Devuelve información de usuario
 ​
-GET [/user] - Devuelve información del usuario del token (necesita cabecera con token) **TOKEN**
+●GET [/user] - Devuelve información del usuario del token (necesita cabecera con token) **TOKEN**
 ​
-POST [/login] - Login de usuario (devuelve token)
+●POST [/login] - Login de usuario (devuelve token)
 ​
-PUT: [/email] para modificar el email **TOKEN**
+●PUT: [/email] para modificar el email **TOKEN**
 ​
-PUT: [/password] para modificar la contraseña **TOKEN**
+●PUT: [/password] para modificar la contraseña **TOKEN**
 ​
-Opinions
+--Opinions
 ​
-POST:[/Opinions] Escribir una Opinión **TOKEN**
+●POST:[/Opinions] Escribir una Opinión **TOKEN**
 ​
-GET:[/Opinions] Mostrar las Opiniones.
+●GET:[/Opinions] Mostrar las Opiniones.
 ​
-GET:[/Opinions/:idOpinion] Mostrar una sola Opinión.
+●GET:[/Opinions/:idOpinion] Mostrar una sola Opinión.
 ​
-DELETE: [/Opinions/:idOpinion] Borrar una opinión del usuario que lo creó **TOKEN**
+●DELETE: [/Opinions/:idOpinion] Borrar una opinión del usuario que lo creó **TOKEN**
 ​
-PUT: [/Opinions] para modificar las opiniones **TOKEN**
+●PUT: [/Opinions] para modificar las opiniones **TOKEN**

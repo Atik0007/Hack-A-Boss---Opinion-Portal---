@@ -59,8 +59,11 @@ User:​
     ​
 -   PUT: [/password] para modificar la contraseña **TOKEN**
     ​
-    Opinions:
+
+Opinions:
+
     ​
+
 -   POST:[/Opinions] Escribir una Opinión **TOKEN**
     ​
 -   GET:[/Opinions] Mostrar las Opiniones.

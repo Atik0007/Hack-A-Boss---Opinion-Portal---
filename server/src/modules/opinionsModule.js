@@ -1,0 +1,32 @@
+const getConnection = require('../database/getConnection');
+
+const user = async () => {
+    let connection;
+    try {
+        connection = await getConnection();
+        console.log('******* Delete opinions table ******');
+        await connection.query('DROP TABLE IF EXISTS opinions');
+        console.log('**** Create opinions table ****');
+
+        await connection.query(`
+            CREATE TABLE opinions (
+                id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                idUser INTEGER ,
+                FOREIGN KEY (idUser) REFERENCES users(id),
+                text VARCHAR(280) NOT NULL,
+                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
+            )
+        `);
+
+        console.log('**** Created table successfully ****');
+    } catch (err) {
+        console.log(err);
+    } finally {
+        if (connection) {
+            connection.release();
+        }
+    }
+};
+
+module.exports = user;

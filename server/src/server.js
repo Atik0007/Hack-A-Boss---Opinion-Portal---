@@ -23,11 +23,47 @@ const auth = require('./middlewares/auth');
  * ## Endpoints User ##
  * ####################
  */
-const { newUser, loginUser } = require('./controllers/users');
+const {
+    newUser,
+    loginUser,
+    getUser,
+    getOwnUser,
+    updateEmail,
+    updatePassword,
+} = require('./controllers/users');
 
 app.post('/users', newUser);
 
 app.post('/users/login', loginUser);
+
+app.get('/users/:idUser', getUser);
+
+app.get('/users', auth, getOwnUser);
+
+app.put('/email', auth, updateEmail);
+
+app.put('/password', auth, updatePassword);
+
+/**
+ * ########################
+ * ## Endpoints Opinions ##
+ * ########################
+ */
+
+const {
+    newOpinion,
+    updateOpinion,
+    deleteOpinion,
+    listOpinions,
+} = require('./controllers/opinions');
+
+app.post('/opinions', auth, newOpinion);
+
+app.put('/opinions/:idOpinion', auth, updateOpinion);
+
+app.get('/opinions', listOpinions);
+
+app.delete('/opinions/:idOpinion', auth, deleteOpinion);
 
 /**
  * ######################

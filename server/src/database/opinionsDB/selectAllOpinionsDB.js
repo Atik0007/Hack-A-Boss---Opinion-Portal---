@@ -10,7 +10,7 @@ const selectAllOpinionsDB = async (keyword) => {
         if (keyword) {
             [opinions] = await connection.query(
                 `
-                    SELECT T.id, T.idUser, T.text, T.createdAt, U.email
+                    SELECT T.id, T.idUser, U.email, T.text, T.createdAt
                     FROM opinions T
                     LEFT JOIN users U 
                     ON T.idUser = U.id
@@ -22,7 +22,7 @@ const selectAllOpinionsDB = async (keyword) => {
         } else {
             [opinions] = await connection.query(
                 `
-                    SELECT T.id, T.idUser, T.text, T.createdAt, U.email
+                    SELECT T.id, T.idUser, U.email, T.text, T.createdAt
                     FROM opinions T
                     LEFT JOIN users U 
                     ON T.idUser = U.id

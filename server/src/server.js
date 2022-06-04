@@ -32,16 +32,22 @@ const {
     updatePassword,
 } = require('./controllers/users');
 
+// new user
 app.post('/users', newUser);
 
+// login user
 app.post('/users/login', loginUser);
 
+// get user
 app.get('/users/:idUser', getUser);
 
+// get own user
 app.get('/users', auth, getOwnUser);
 
+// update email
 app.put('/email', auth, updateEmail);
 
+// update password
 app.put('/password', auth, updatePassword);
 
 /**
@@ -55,15 +61,37 @@ const {
     updateOpinion,
     deleteOpinion,
     listOpinions,
+    getOpinion,
 } = require('./controllers/opinions');
 
+// new opinion
 app.post('/opinions', auth, newOpinion);
 
+// update opinion
 app.put('/opinions/:idOpinion', auth, updateOpinion);
 
+// all opinions
 app.get('/opinions', listOpinions);
 
+// get opinion
+app.get('/opinions/:idOpinion', getOpinion);
+
+// delete opinion
 app.delete('/opinions/:idOpinion', auth, deleteOpinion);
+
+/**
+ * #############################
+ * ## Endpoints Likes/dislike ##
+ * #############################
+ */
+
+const { addLikes, disLikes } = require('./controllers/likes');
+
+// add like and remove like
+app.post('/likes/:idOpinion', auth, addLikes);
+
+// add dislike and remove dislike
+app.post('/dislikes/:idOpinion', auth, disLikes);
 
 /**
  * ######################

@@ -29,31 +29,44 @@ personas puedan verlas.
 ​
 
 -   User:
+
     -   id
     -   email
     -   password
     -   createdAt
     -   modifiedAt
         ​
+
 -   Opinions:
+
     -   id
     -   idUser
     -   text
+    -   likes
+    -   dislike
     -   createdAt
     -   modifiedAt
+
+-   likes:
+
+    -   id
+    -   idUser
+    -   idOpinion
+    -   likes
+    -   dislike
 
 ## Endpoints
 
 ​
 --User:​
 
--   POST [/user] - Registro de usuario
+-   POST: [/user] - Registro de usuario
     ​
--   GET [/user/:id] - Devuelve información de usuario
+-   POST: [/login] - Login de usuario (devuelve token)
     ​
--   GET [/user] - Devuelve información del usuario del token (necesita cabecera con token) **TOKEN**
+-   GET: [/user/:id] - Devuelve información de usuario
     ​
--   POST [/login] - Login de usuario (devuelve token)
+-   GET: [/user] - Devuelve información del usuario del token (necesita cabecera con token) **TOKEN**
     ​
 -   PUT: [/email] para modificar el email **TOKEN**
     ​
@@ -61,12 +74,18 @@ personas puedan verlas.
 
 --Opinions:
 
--   POST:[/Opinions] Escribir una Opinión **TOKEN**
+-   POST: [/opinions] Escribir una Opinión **TOKEN**
     ​
--   GET:[/Opinions] Mostrar las Opiniones.
+-   GET: [/opinions] Mostrar las Opiniones.
     ​
--   GET:[/Opinions/:idOpinion] Mostrar una sola Opinión.
+-   GET: [/opinions/:idOpinion] Mostrar una sola Opinión.
     ​
--   DELETE: [/Opinions/:idOpinion] Borrar una opinión del usuario que lo creó **TOKEN**
+-   PUT: [/opinions] para modificar las opiniones **TOKEN**
     ​
--   PUT: [/Opinions] para modificar las opiniones **TOKEN**
+-   DELETE: [/opinions/:idOpinion] Borrar una opinión del usuario que lo creó **TOKEN**
+
+--likes:
+
+-   POST: [/likes/:idOpinion] para darle like a una opinión **TOKEN**
+
+-   POST: [/dislikes/:idOpinion] para darle dislike a una opinión **TOKEN**

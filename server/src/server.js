@@ -32,19 +32,19 @@ const {
 } = require('./controllers/users');
 
 // new user
-app.post('/users', newUser);
+app.post('/user', newUser);
 
 // login user
-app.post('/users/login', loginUser);
+app.post('/user/login', loginUser);
 
 // get user
-app.get('/users/:idUser', getUser);
+app.get('/user/:idUser', getUser);
 
 // get own user
-app.get('/users', auth, getOwnUser);
+app.get('/user', auth, getOwnUser);
 
 // update email and password
-app.put('/users', auth, updateEmailAndPass);
+app.put('/user', auth, updateEmailAndPass);
 
 /**
  * ########################
@@ -61,7 +61,7 @@ const {
 } = require('./controllers/opinions');
 
 // new opinion
-app.post('/opinions', auth, newOpinion);
+app.post('/opinion', auth, newOpinion);
 
 // update opinion
 app.put('/opinions/:idOpinion', auth, updateOpinion);

@@ -62,24 +62,24 @@ personas puedan verlas.
 
 -   POST: [/user] - Registro de usuario
     ​
--   POST: [/login] - Login de usuario (devuelve token)
+-   POST: [/user/login] - Login de usuario (devuelve token)
     ​
--   GET: [/user/:id] - Devuelve información de usuario
+-   GET: [/user/:idUser] - Devuelve información de usuario
     ​
 -   GET: [/user] - Devuelve información del usuario del token (necesita cabecera con token) **TOKEN**
     ​
--   PUT: [/users] para modificar el email y password **TOKEN**
+-   PUT: [/user] para modificar el email y password **TOKEN**
     ​
 
 --Opinions:
 
--   POST: [/opinions] Escribir una Opinión **TOKEN**
+-   POST: [/opinion] Escribir una Opinión **TOKEN**
     ​
 -   GET: [/opinions] Mostrar las Opiniones.
     ​
 -   GET: [/opinions/:idOpinion] Mostrar una sola Opinión.
     ​
--   PUT: [/opinions] para modificar las opiniones **TOKEN**
+-   PUT: [/opinions/:idOpinion] para modificar las opiniones **TOKEN**
     ​
 -   DELETE: [/opinions/:idOpinion] Borrar una opinión del usuario que lo creó **TOKEN**
 

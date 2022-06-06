@@ -1,8 +1,8 @@
 {
 	"info": {
 		"_postman_id": "a3ae542f-ce40-4684-8daa-b6986fc5f703",
-		"name": "opinionsCommits",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "opinionsPortal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -22,15 +22,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/users",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"users"
-							]
-						}
+						"url": "{{server}}/user"
 					},
 					"response": []
 				},
@@ -48,16 +40,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/users/login",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"users",
-								"login"
-							]
-						}
+						"url": "{{server}}/user/login"
 					},
 					"response": []
 				},
@@ -73,16 +56,7 @@
 								"disabled": true
 							}
 						],
-						"url": {
-							"raw": "{{server}}/users/7",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"users",
-								"7"
-							]
-						}
+						"url": "{{server}}/user/7"
 					},
 					"response": []
 				},
@@ -104,15 +78,7 @@
 								"type": "default"
 							}
 						],
-						"url": {
-							"raw": "{{server}}/users",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"users"
-							]
-						}
+						"url": "{{server}}/user"
 					},
 					"response": []
 				},
@@ -144,12 +110,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/password",
+							"raw": "{{server}}/user",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
-								"password"
+								"user"
 							],
 							"query": [
 								{
@@ -191,15 +157,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/opinions",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"opinions"
-							]
-						}
+						"url": "{{server}}/opinions"
 					},
 					"response": []
 				},
@@ -227,16 +185,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/opinions/4",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"opinions",
-								"4"
-							]
-						}
+						"url": "{{server}}/opinions/4"
 					},
 					"response": []
 				},
@@ -260,15 +209,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/opinions",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"opinions"
-							]
-						}
+						"url": "{{server}}/opinion"
 					},
 					"response": []
 				},
@@ -292,16 +233,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/opinions/10",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"opinions",
-								"10"
-							]
-						}
+						"url": "{{server}}/opinions/10"
 					},
 					"response": []
 				},
@@ -325,16 +257,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/opinions/10",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"opinions",
-								"10"
-							]
-						}
+						"url": "{{server}}/opinions/10"
 					},
 					"response": []
 				}
@@ -363,16 +286,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/likes/12",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"likes",
-								"12"
-							]
-						}
+						"url": "{{server}}/like/12"
 					},
 					"response": []
 				},
@@ -396,16 +310,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{server}}/dislikes/12",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"dislikes",
-								"12"
-							]
-						}
+						"url": "{{server}}/dislike/11"
 					},
 					"response": []
 				}

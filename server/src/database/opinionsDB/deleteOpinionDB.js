@@ -14,6 +14,7 @@ const deleteOpinionDB = async (idUser, idOpinion) => {
         if (id.length === 0) {
             throw generateError(404, 'Opinion not exists');
         }
+
         const [validUser] = await connection.query(
             'SELECT id  FROM opinions WHERE idUser = ? AND id = ?',
             [idUser, id[0].id]

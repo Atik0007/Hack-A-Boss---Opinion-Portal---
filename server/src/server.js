@@ -84,10 +84,10 @@ app.delete('/opinions/:idOpinion', auth, deleteOpinion);
 const { addLikes, disLikes } = require('./controllers/likes');
 
 // add like and remove like
-app.post('/likes/:idOpinion', auth, addLikes);
+app.post('/like/:idOpinion', auth, addLikes);
 
 // add dislike and remove dislike
-app.post('/dislikes/:idOpinion', auth, disLikes);
+app.post('/dislike/:idOpinion', auth, disLikes);
 
 /**
  * ######################

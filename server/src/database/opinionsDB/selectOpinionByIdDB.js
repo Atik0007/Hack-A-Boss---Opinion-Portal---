@@ -7,7 +7,7 @@ const selectOpinionsByIdDB = async (idOpinion) => {
 
         const [opinions] = await connection.query(
             `
-                    SELECT T.id, T.idUser, U.email, T.text, T.createdAt
+                    SELECT T.id, T.idUser, U.email, T.text,T.likes, T.dislikes, T.createdAt
                     FROM opinions T
                     LEFT JOIN users U 
                     ON T.idUser = U.id

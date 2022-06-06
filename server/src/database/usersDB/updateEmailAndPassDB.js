@@ -4,7 +4,7 @@ const getConnection = require('../getConnection');
 
 /* const generateError = require('../../utils/generateError'); */
 
-const updatePasswordDB = async (idUser, password) => {
+const updatePasswordDB = async (idUser, password, email) => {
     let connection;
     try {
         connection = await getConnection();
@@ -12,8 +12,8 @@ const updatePasswordDB = async (idUser, password) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const [updatedPassword] = await connection.query(
-            'UPDATE users SET password = ? WHERE id = ?',
-            [hashedPassword, idUser]
+            'UPDATE users SET password = ?,email = ?  WHERE id = ?',
+            [hashedPassword, email, idUser]
         );
 
         return updatedPassword.insertId;

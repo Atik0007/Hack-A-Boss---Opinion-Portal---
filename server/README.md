@@ -68,9 +68,8 @@ personas puedan verlas.
     ​
 -   GET: [/user] - Devuelve información del usuario del token (necesita cabecera con token) **TOKEN**
     ​
--   PUT: [/email] para modificar el email **TOKEN**
+-   PUT: [/users] para modificar el email y password **TOKEN**
     ​
--   PUT: [/password] para modificar la contraseña **TOKEN**
 
 --Opinions:
 

@@ -10,23 +10,23 @@ const selectAllOpinionsDB = async (keyword) => {
         if (keyword) {
             [opinions] = await connection.query(
                 `
-                    SELECT T.id, T.idUser, U.email, T.text, T.createdAt
+                    SELECT T.id, T.idUser, U.email, T.text, T.likes, T.dislikes, T.createdAt
                     FROM opinions T
                     LEFT JOIN users U 
                     ON T.idUser = U.id
                     WHERE T.text LIKE ?
-                    ORDER BY T.createdAt DESC
+                    ORDER BY T.likes DESC
                 `,
                 [`%${keyword}%`]
             );
         } else {
             [opinions] = await connection.query(
                 `
-                    SELECT T.id, T.idUser, U.email, T.text, T.createdAt
+                    SELECT T.id, T.idUser, U.email, T.text,T.likes, T.dislikes, T.createdAt
                     FROM opinions T
                     LEFT JOIN users U 
                     ON T.idUser = U.id
-                    ORDER BY T.createdAt DESC
+                    ORDER BY T.likes DESC
                 `
             );
         }

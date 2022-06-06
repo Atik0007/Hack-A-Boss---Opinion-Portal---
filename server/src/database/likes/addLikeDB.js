@@ -26,36 +26,55 @@ const addLikeDB = async (idUser, idOpinion) => {
             'SELECT idUser FROM likes WHERE idUser = ? AND idOpinion = ? AND likes = 1',
             [idUser, idOpinion]
         );
+
+        // if user already liked this opinion then delete the like else add a like
         if (like.length > 0) {
             await connection.query(
                 'DELETE FROM likes WHERE idUser = ? AND idOpinion = ? AND likes = 1',
                 [idUser, idOpinion]
             );
+            // count all likes
+            const [likes] = await connection.query(
+                'SELECT COUNT(*) AS likes FROM likes WHERE idOpinion = ? AND likes = 1',
+                [idOpinion]
+            );
+
+            // count all dislikes
+            const [dislikes] = await connection.query(
+                'SELECT COUNT(*) AS dislikes FROM likes WHERE idOpinion = ? AND dislike = 1',
+                [idOpinion]
+            );
+
+            // update opinion likes and dislikes
+            await connection.query(
+                'UPDATE opinions SET likes = ? , dislikes = ?  WHERE id = ?',
+                [likes[0].likes, dislikes[0].dislikes, idOpinion]
+            );
+            throw generateError(403, 'Like Deleted');
+        } else {
+            // add new like
+            await connection.query(
+                'INSERT INTO likes (likes, idUser, idOpinion) VALUES (true, ?, ?)',
+                [idUser, idOpinion]
+            );
+            // count all likes
+            const [likes] = await connection.query(
+                'SELECT COUNT(*) AS likes FROM likes WHERE idOpinion = ? AND likes = 1',
+                [idOpinion]
+            );
+
+            // count all dislikes
+            const [dislikes] = await connection.query(
+                'SELECT COUNT(*) AS dislikes FROM likes WHERE idOpinion = ? AND dislike = 1',
+                [idOpinion]
+            );
+
+            // update opinion likes and dislikes
+            await connection.query(
+                'UPDATE opinions SET likes = ? , dislikes = ?  WHERE id = ?',
+                [likes[0].likes, dislikes[0].dislikes, idOpinion]
+            );
         }
-
-        // add new like
-        await connection.query(
-            'INSERT INTO likes (likes, idUser, idOpinion) VALUES (true, ?, ?)',
-            [idUser, idOpinion]
-        );
-
-        // count all likes
-        const [likes] = await connection.query(
-            'SELECT COUNT(*) AS likes FROM likes WHERE idOpinion = ? AND likes = 1',
-            [idOpinion]
-        );
-
-        // count all dislikes
-        const [dislikes] = await connection.query(
-            'SELECT COUNT(*) AS dislikes FROM likes WHERE idOpinion = ? AND dislike = 1',
-            [idOpinion]
-        );
-
-        // update opinion likes and dislikes
-        await connection.query(
-            'UPDATE opinions SET likes = ? , dislikes = ?  WHERE id = ?',
-            [likes[0].likes, dislikes[0].dislikes, idOpinion]
-        );
     } finally {
         if (connection) {
             connection.release();

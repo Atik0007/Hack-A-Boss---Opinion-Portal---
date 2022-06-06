@@ -28,8 +28,7 @@ const {
     loginUser,
     getUser,
     getOwnUser,
-    updateEmail,
-    updatePassword,
+    updateEmailAndPass,
 } = require('./controllers/users');
 
 // new user
@@ -44,11 +43,8 @@ app.get('/users/:idUser', getUser);
 // get own user
 app.get('/users', auth, getOwnUser);
 
-// update email
-app.put('/email', auth, updateEmail);
-
-// update password
-app.put('/password', auth, updatePassword);
+// update email and password
+app.put('/users', auth, updateEmailAndPass);
 
 /**
  * ########################

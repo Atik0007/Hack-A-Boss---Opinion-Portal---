@@ -11,6 +11,8 @@ const user = async () => {
         await connection.query(`
         CREATE TABLE users (
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(255) NOT NULL,
+            lastName VARCHAR(255) NOT NULL,
             email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,

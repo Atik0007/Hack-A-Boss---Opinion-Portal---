@@ -7,7 +7,7 @@ const selectUserByIdDB = async (idUser) => {
     try {
         connection = await getConnection();
         const [user] = await connection.query(
-            'SELECT id , email FROM users WHERE id = ?',
+            'SELECT id, email, name, lastName FROM users WHERE id = ?',
             [idUser]
         );
 

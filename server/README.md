@@ -31,6 +31,8 @@ personas puedan verlas.
 -   User:
 
     -   id
+    -   name
+    -   lastname
     -   email
     -   password
     -   createdAt

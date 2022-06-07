@@ -4,7 +4,7 @@ const getConnection = require('../getConnection');
 
 const generateError = require('../../utils/generateError');
 
-const insertUserDB = async (email, password) => {
+const insertUserDB = async (email, password, name, lastName) => {
     let connection;
     try {
         connection = await getConnection();
@@ -15,14 +15,14 @@ const insertUserDB = async (email, password) => {
         );
 
         if (user.length > 0) {
-            throw generateError(409, 'User already exists');
+            throw generateError(409, 'Email already exists');
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const [idUser] = await connection.query(
-            'INSERT INTO users (email, password) VALUES (?, ?)',
-            [email, hashedPassword]
+            'INSERT INTO users (email, password, name, lastName) VALUES (?, ?, ?, ?)',
+            [email, hashedPassword, name, lastName]
         );
 
         return idUser.insertId;

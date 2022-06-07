@@ -4,14 +4,14 @@ const generateError = require('../../utils/generateError');
 
 const newUser = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, name, lastName } = req.body;
 
         // This is a validation to check if the user has sent the email and password. If not, it will  throw an error.
-        if (!email || !password) {
-            throw generateError(400, 'Missing email or password');
+        if (!email || !password || !name || !lastName) {
+            throw generateError(400, 'Missing parameters');
         }
 
-        const idUser = await insertUserDB(email, password);
+        const idUser = await insertUserDB(email, password, name, lastName);
 
         res.send({
             status: 'ok',

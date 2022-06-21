@@ -98,23 +98,23 @@ personas puedan verlas.
     ​
 -   GET: [/user] - Devuelve información del usuario del token. **TOKEN**
     ​
--   PUT: [/user] Modificar el email y password. **TOKEN**
+-   PUT: [/user] - Modificar el email y password. **TOKEN**
     ​
 
 --Opinions:
 
--   POST: [/opinions] Escribir una Opinión. **TOKEN**
+-   POST: [/opinions] - Escribir una Opinión. **TOKEN**
     ​
--   GET: [/opinions] Mostrar todas las Opiniones.
+-   GET: [/opinions] - Mostrar todas las Opiniones.
     ​
--   GET: [/opinions/:idOpinions] Mostrar una sola opinión.
+-   GET: [/opinions/:idOpinions] - Mostrar una sola opinión.
     ​
--   PUT: [/opinions/:idOpinion] Modificar las opiniones.**TOKEN**
+-   PUT: [/opinions/:idOpinion] - Modificar las opiniones.**TOKEN**
     ​
--   DELETE: [/opinions/:idOpinion] Borrar una opinión del usuario que lo creó. **TOKEN**
+-   DELETE: [/opinions/:idOpinion] - Borrar una opinión del usuario que lo creó. **TOKEN**
 
 --Likes:
 
--   POST: [/opinions/:idOpinion/like] Dar o quitar like a una opinión .**TOKEN**
+-   POST: [/opinions/:idOpinion/like - Dar o quitar like a una opinión .**TOKEN**
 
--   POST: [/dislikes/:idOpinion] Dar o quitar dislike a una opinión. **TOKEN**
+-   POST: [/opinions/:idOpinion/dislike] - Dar o quitar dislike a una opinión. **TOKEN**

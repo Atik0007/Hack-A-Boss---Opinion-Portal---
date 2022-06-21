@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"useer5@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"raw": "{\n    \"email\":\"user_2@gmail.com\",\n    \"password\":\"123456\",\n    \"name\":\"charle2\",\n    \"lastName\":\"ortega\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"useer5@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"raw": "{\n \"email\":\"user_2@gmail.com\",\n    \"password\":\"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -56,7 +56,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{server}}/user/7"
+						"url": "{{server}}/user/2"
 					},
 					"response": []
 				},
@@ -74,7 +74,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_1}}",
+								"value": "{{user_2}}",
 								"type": "default"
 							}
 						],
@@ -96,13 +96,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_4}}",
+								"value": "{{user_1}}",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n\"email\":\"useer4Update@gmail.com\",\n    \"password\":\"123454\"\n}",
+							"raw": "{\n\"email\":\"user1Update-3@gmail.com\"\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -134,20 +134,37 @@
 			"name": "Opinios",
 			"item": [
 				{
+					"name": "newOpinion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{carlors}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\":\"opinion of carlos 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/opinions"
+					},
+					"response": []
+				},
+				{
 					"name": "getAllOpinions",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{user_4}}",
-								"type": "default",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -185,31 +202,7 @@
 								}
 							}
 						},
-						"url": "{{server}}/opinions/4"
-					},
-					"response": []
-				},
-				{
-					"name": "newOpinion",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{user_5}}",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"text\":\"opinion of user 5 - 2\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{server}}/opinion"
+						"url": "{{server}}/opinions/1"
 					},
 					"response": []
 				},
@@ -244,7 +237,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_1}}",
+								"value": "{{carlors}}",
 								"type": "default"
 							}
 						],
@@ -257,7 +250,7 @@
 								}
 							}
 						},
-						"url": "{{server}}/opinions/10"
+						"url": "{{server}}/opinions/2"
 					},
 					"response": []
 				}
@@ -273,7 +266,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_2}}",
+								"value": "{{carlors}}",
 								"type": "default"
 							}
 						],
@@ -286,7 +279,7 @@
 								}
 							}
 						},
-						"url": "{{server}}/like/12"
+						"url": "{{server}}/opinions/2/like"
 					},
 					"response": []
 				},
@@ -297,20 +290,20 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_1}}",
+								"value": "{{carlors}}",
 								"type": "default"
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"text\":\"update5434\"\n}",
+							"mode": "urlencoded",
+							"urlencoded": [],
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{server}}/dislike/11"
+						"url": "{{server}}/opinions/1/dislike"
 					},
 					"response": []
 				}
@@ -344,37 +337,12 @@
 			"type": "default"
 		},
 		{
-			"key": "tokenId_2",
-			"value": "",
-			"type": "default"
-		},
-		{
 			"key": "user_1",
 			"value": "",
 			"type": "default"
 		},
 		{
-			"key": "user_2",
-			"value": "",
-			"type": "default"
-		},
-		{
-			"key": "user_3",
-			"value": "",
-			"type": "default"
-		},
-		{
-			"key": "user_4",
-			"value": "",
-			"type": "default"
-		},
-		{
-			"key": "user_7",
-			"value": "",
-			"type": "default"
-		},
-		{
-			"key": "user_5",
+			"key": "carlors",
 			"value": "",
 			"type": "default"
 		}

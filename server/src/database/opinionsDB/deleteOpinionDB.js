@@ -6,6 +6,7 @@ const deleteOpinionDB = async (idUser, idOpinion) => {
     let connection;
     try {
         connection = await getConnection();
+
         const [id] = await connection.query(
             'SELECT id FROM opinions WHERE id = ?',
             [idOpinion]

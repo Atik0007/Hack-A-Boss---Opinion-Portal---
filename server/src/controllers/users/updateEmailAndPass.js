@@ -1,27 +1,31 @@
 const updatePasswordDB = require('../../database/usersDB/updateEmailAndPassDB');
 
-const generateError = require('../../utils/generateError');
-
 const updatePassword = async (req, res, next) => {
     try {
         const { password, email } = req.body;
-        if (!password || !email) {
-            throw generateError(401, 'email and password are required');
+
+        if (email && password) {
+            await updatePasswordDB(req.idUser, email, password);
+
+            res.send({
+                status: 'Ok',
+                message: `Email and Password id: ${req.idUser} updated successfully`,
+            });
+        } else if (email) {
+            await updatePasswordDB(req.idUser, email, null);
+
+            res.send({
+                status: 'Ok',
+                message: `Email id: ${req.idUser} updated successfully`,
+            });
+        } else if (password) {
+            await updatePasswordDB(req.idUser, null, password);
+
+            res.send({
+                status: 'Ok',
+                message: `Password id: ${req.idUser} updated successfully`,
+            });
         }
-
-        const updatedPassword = await updatePasswordDB(
-            req.idUser,
-            password,
-            email
-        );
-
-        res.send({
-            status: 'Ok',
-            message: `Email and  Password of id: ${req.idUser} updated successfully`,
-            data: {
-                user: updatedPassword,
-            },
-        });
     } catch (err) {
         next(err);
     }

@@ -23,6 +23,7 @@ const auth = require('./middlewares/auth');
  * ## Endpoints User ##
  * ####################
  */
+
 const {
     newUser,
     loginUser,
@@ -31,19 +32,19 @@ const {
     updateEmailAndPass,
 } = require('./controllers/users');
 
-// new user
+// New user
 app.post('/user', newUser);
 
-// login user
+// Login user
 app.post('/user/login', loginUser);
 
-// get user
+// Get user
 app.get('/user/:idUser', getUser);
 
-// get own user
+// Get own user
 app.get('/user', auth, getOwnUser);
 
-// update email and password
+// Update email and password
 app.put('/user', auth, updateEmailAndPass);
 
 /**
@@ -60,19 +61,19 @@ const {
     getOpinion,
 } = require('./controllers/opinions');
 
-// new opinion
-app.post('/opinion', auth, newOpinion);
+// New opinion
+app.post('/opinions', auth, newOpinion);
 
-// update opinion
-app.put('/opinions/:idOpinion', auth, updateOpinion);
-
-// all opinions
+// Get all opinions
 app.get('/opinions', listOpinions);
 
-// get opinion
-app.get('/opinions/:idOpinion', getOpinion);
+// Get opinion
+app.get('/opinions/:idOpinions', getOpinion);
 
-// delete opinion
+// Update opinion
+app.put('/opinions/:idOpinions', auth, updateOpinion);
+
+// Delete opinion
 app.delete('/opinions/:idOpinion', auth, deleteOpinion);
 
 /**
@@ -83,11 +84,11 @@ app.delete('/opinions/:idOpinion', auth, deleteOpinion);
 
 const { addLikes, disLikes } = require('./controllers/likes');
 
-// add like and remove like
-app.post('/like/:idOpinion', auth, addLikes);
+// Add like and remove like
+app.post('/opinions/:idOpinion/like', auth, addLikes);
 
-// add dislike and remove dislike
-app.post('/dislike/:idOpinion', auth, disLikes);
+// Add dislike and remove dislike
+app.post('/opinions/:idOpinion/dislike', auth, disLikes);
 
 /**
  * ######################

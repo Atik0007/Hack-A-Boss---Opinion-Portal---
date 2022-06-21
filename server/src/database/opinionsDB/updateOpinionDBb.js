@@ -27,7 +27,7 @@ const updateOpinionDB = async (idUser, idOpinion, opinion) => {
             throw generateError(403, 'You are not the owner of this opinion');
         }
 
-        //Updating the opinion.
+        // Updating the opinion.
         await connection.query('UPDATE opinions SET text = ? WHERE id = ?', [
             opinion,
             idOpinion,

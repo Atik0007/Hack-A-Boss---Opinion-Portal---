@@ -1,7 +1,5 @@
 const getConnection = require('../getConnection');
 
-/* const generateError = require('../../utils/generateError'); */
-
 const newOpinionDB = async (idUser, text) => {
     let connection;
     try {

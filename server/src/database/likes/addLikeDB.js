@@ -6,70 +6,86 @@ const addLikeDB = async (idUser, idOpinion) => {
     try {
         connection = await getConnection();
 
-        // check if opinion exists
+        // Check if opinion exists
         const [id] = await connection.query(
             'SELECT id FROM opinions WHERE id = ?',
             [idOpinion]
         );
+
         if (id.length === 0) {
             throw generateError(404, 'Opinion not exists');
         }
 
-        // change dislike to false
+        // Check if the opinion is owned by the user
+        const [user] = await connection.query(
+            'SELECT id FROM users WHERE id = ?',
+            [idUser]
+        );
+        const [userId] = await connection.query(
+            'SELECT idUser FROM opinions WHERE id = ?',
+            [idOpinion]
+        );
+
+        // If the user is the owner of the opinion, it will throw an error
+        if (user[0].id === userId[0].idUser) {
+            throw generateError(400, 'You can not like your own opinion');
+        }
+
+        // Change dislike to false
         await connection.query(
             'UPDATE likes SET dislike = false WHERE idUser = ? AND idOpinion = ?',
             [idUser, idOpinion]
         );
 
-        //check if user already liked this opinion if he did then delete the like
+        // Check if user already liked this opinion if he did then delete the like
         const [like] = await connection.query(
             'SELECT idUser FROM likes WHERE idUser = ? AND idOpinion = ? AND likes = 1',
             [idUser, idOpinion]
         );
 
-        // if user already liked this opinion then delete the like else add a like
+        // If user already liked this opinion then delete the like else add a like
         if (like.length > 0) {
             await connection.query(
                 'DELETE FROM likes WHERE idUser = ? AND idOpinion = ? AND likes = 1',
                 [idUser, idOpinion]
             );
-            // count all likes
+            // Count all likes
             const [likes] = await connection.query(
                 'SELECT COUNT(*) AS likes FROM likes WHERE idOpinion = ? AND likes = 1',
                 [idOpinion]
             );
 
-            // count all dislikes
+            // Count all dislikes
             const [dislikes] = await connection.query(
                 'SELECT COUNT(*) AS dislikes FROM likes WHERE idOpinion = ? AND dislike = 1',
                 [idOpinion]
             );
 
-            // update opinion likes and dislikes
+            // Update opinion likes and dislikes
             await connection.query(
                 'UPDATE opinions SET likes = ? , dislikes = ?  WHERE id = ?',
                 [likes[0].likes, dislikes[0].dislikes, idOpinion]
             );
             throw generateError(403, 'Like Deleted');
         } else {
-            // add new like
+            // Add new like
             await connection.query(
                 'INSERT INTO likes (likes, idUser, idOpinion) VALUES (true, ?, ?)',
                 [idUser, idOpinion]
             );
-            // count all likes
+            // Count all likes
             const [likes] = await connection.query(
                 'SELECT COUNT(*) AS likes FROM likes WHERE idOpinion = ? AND likes = 1',
                 [idOpinion]
             );
 
-            // count all dislikes
+            // Count all dislikes
             const [dislikes] = await connection.query(
                 'SELECT COUNT(*) AS dislikes FROM likes WHERE idOpinion = ? AND dislike = 1',
                 [idOpinion]
             );
 
-            // update opinion likes and dislikes
+            // Update opinion likes and dislikes
             await connection.query(
                 'UPDATE opinions SET likes = ? , dislikes = ?  WHERE id = ?',
                 [likes[0].likes, dislikes[0].dislikes, idOpinion]

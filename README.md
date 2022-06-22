@@ -77,13 +77,14 @@ personas puedan verlas.
     -   createdAt
     -   modifiedAt
 
--   Likes:
+-   Votes:
 
     -   id
     -   idUser
     -   idOpinion
-    -   likes
-    -   dislike
+    -   value
+    -   createdAt
+    -   modifiedAt
 
 ## Endpoints
 
@@ -113,7 +114,7 @@ personas puedan verlas.
     ​
 -   DELETE: [/opinions/:idOpinion] - Borrar una opinión del usuario que lo creó. **TOKEN**
 
---Likes:
+--Votes:
 
 -   POST: [/opinions/:idOpinion/like - Dar o quitar like a una opinión .**TOKEN**
 

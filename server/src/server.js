@@ -76,9 +76,9 @@ app.put('/opinions/:idOpinion', auth, opinionExists, updateOpinion);
 app.delete('/opinions/:idOpinion', auth, opinionExists, deleteOpinion);
 
 /**
- * #############################
- * ## Endpoints Likes/dislike ##
- * #############################
+ * #####################
+ * ## Endpoints Votes ##
+ * #####################
  */
 
 const { addLikes, disLikes } = require('./controllers/likes');

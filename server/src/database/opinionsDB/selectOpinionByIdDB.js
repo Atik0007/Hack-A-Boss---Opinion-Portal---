@@ -1,5 +1,4 @@
 const getConnection = require('../getConnection');
-const generateError = require('../../utils/generateError');
 
 const selectOpinionsByIdDB = async (idOpinion) => {
     let connection;
@@ -16,9 +15,7 @@ const selectOpinionsByIdDB = async (idOpinion) => {
                 `,
             [idOpinion]
         );
-        if (opinions.length === 0) {
-            throw generateError(404, 'Opinion not exists');
-        }
+
         return opinions[0];
     } finally {
         if (connection) {

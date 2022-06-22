@@ -1,4 +1,3 @@
-const generateError = require('../../utils/generateError');
 const getConnection = require('../getConnection');
 
 const addLikeDB = async (idUser, idOpinion) => {
@@ -6,90 +5,29 @@ const addLikeDB = async (idUser, idOpinion) => {
     try {
         connection = await getConnection();
 
-        // Check if opinion exists
-        const [id] = await connection.query(
-            'SELECT id FROM opinions WHERE id = ?',
-            [idOpinion]
-        );
-
-        if (id.length === 0) {
-            throw generateError(404, 'Opinion not exists');
-        }
-
-        // Check if the opinion is owned by the user
-        const [user] = await connection.query(
-            'SELECT id FROM users WHERE id = ?',
-            [idUser]
-        );
-        const [userId] = await connection.query(
-            'SELECT idUser FROM opinions WHERE id = ?',
-            [idOpinion]
-        );
-
-        // If the user is the owner of the opinion, it will throw an error
-        if (user[0].id === userId[0].idUser) {
-            throw generateError(400, 'You can not like your own opinion');
-        }
-
-        // Change dislike to false
-        await connection.query(
-            'UPDATE likes SET dislike = false WHERE idUser = ? AND idOpinion = ?',
-            [idUser, idOpinion]
-        );
-
-        // Check if user already liked this opinion if he did then delete the like
         const [like] = await connection.query(
-            'SELECT idUser FROM likes WHERE idUser = ? AND idOpinion = ? AND likes = 1',
+            'SELECT value FROM vote WHERE idUser = ? AND idOpinion = ?',
             [idUser, idOpinion]
         );
 
-        // If user already liked this opinion then delete the like else add a like
-        if (like.length > 0) {
+        if (like.length < 1) {
             await connection.query(
-                'DELETE FROM likes WHERE idUser = ? AND idOpinion = ? AND likes = 1',
+                'INSERT INTO vote (idUser, idOpinion, value) VALUES (?, ?, 1)',
                 [idUser, idOpinion]
             );
-            // Count all likes
-            const [likes] = await connection.query(
-                'SELECT COUNT(*) AS likes FROM likes WHERE idOpinion = ? AND likes = 1',
-                [idOpinion]
-            );
-
-            // Count all dislikes
-            const [dislikes] = await connection.query(
-                'SELECT COUNT(*) AS dislikes FROM likes WHERE idOpinion = ? AND dislike = 1',
-                [idOpinion]
-            );
-
-            // Update opinion likes and dislikes
+            return true;
+        } else if (like[0].value === 1) {
             await connection.query(
-                'UPDATE opinions SET likes = ? , dislikes = ?  WHERE id = ?',
-                [likes[0].likes, dislikes[0].dislikes, idOpinion]
+                'DELETE FROM vote WHERE idUser = ? AND idOpinion = ?',
+                [idUser, idOpinion]
             );
-            throw generateError(403, 'Like Deleted');
+            return false;
         } else {
-            // Add new like
             await connection.query(
-                'INSERT INTO likes (likes, idUser, idOpinion) VALUES (true, ?, ?)',
+                'UPDATE vote SET value = 1 WHERE idUser = ? AND idOpinion = ?',
                 [idUser, idOpinion]
             );
-            // Count all likes
-            const [likes] = await connection.query(
-                'SELECT COUNT(*) AS likes FROM likes WHERE idOpinion = ? AND likes = 1',
-                [idOpinion]
-            );
-
-            // Count all dislikes
-            const [dislikes] = await connection.query(
-                'SELECT COUNT(*) AS dislikes FROM likes WHERE idOpinion = ? AND dislike = 1',
-                [idOpinion]
-            );
-
-            // Update opinion likes and dislikes
-            await connection.query(
-                'UPDATE opinions SET likes = ? , dislikes = ?  WHERE id = ?',
-                [likes[0].likes, dislikes[0].dislikes, idOpinion]
-            );
+            return null;
         }
     } finally {
         if (connection) {

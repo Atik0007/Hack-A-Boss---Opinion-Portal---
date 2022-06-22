@@ -107,7 +107,7 @@ personas puedan verlas.
     ​
 -   GET: [/opinions] - Mostrar todas las Opiniones.
     ​
--   GET: [/opinions/:idOpinions] - Mostrar una sola opinión.
+-   GET: [/opinions/:idOpinion] - Mostrar una sola opinión.
     ​
 -   PUT: [/opinions/:idOpinion] - Modificar las opiniones.**TOKEN**
     ​

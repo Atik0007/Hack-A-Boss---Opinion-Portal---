@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"user_4@gmail.com\",\n    \"password\":\"123456\",\n    \"name\":\"charle2\",\n    \"lastName\":\"ortega\"\n}",
+							"raw": "{\n    \"email\":\"user_3@gmail.com\",\n    \"password\":\"123456\",\n    \"name\":\"charle3\",\n    \"lastName\":\"ortega\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n \"email\":\"user_2@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"raw": "{\n \"email\":\"user_3@gmail.com\",\n    \"password\":\"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -140,13 +140,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{carlors}}",
+								"value": "{{user_3}}",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"text\":\"opinion of user2\"\n}",
+							"raw": "{\n    \"text\":\"opinion of user3\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -188,7 +188,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_4}}",
+								"value": "{{user_1}}",
 								"type": "default",
 								"disabled": true
 							}
@@ -202,7 +202,7 @@
 								}
 							}
 						},
-						"url": "{{server}}/opinions/1"
+						"url": "{{server}}/opinions/2"
 					},
 					"response": []
 				},
@@ -219,14 +219,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"text\":\"updat user 1 \"\n}",
+							"raw": "{\n    \"text\":\"updat user 1 - 2 \"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{server}}/opinions/10"
+						"url": "{{server}}/opinions/1"
 					},
 					"response": []
 				},
@@ -237,7 +237,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{carlors}}",
+								"value": "{{user_3}}",
 								"type": "default"
 							}
 						],
@@ -250,7 +250,7 @@
 								}
 							}
 						},
-						"url": "{{server}}/opinions/2"
+						"url": "{{server}}/opinions/3"
 					},
 					"response": []
 				}
@@ -279,7 +279,7 @@
 								}
 							}
 						},
-						"url": "{{server}}/opinions/1/like"
+						"url": "{{server}}/opinions/2/like"
 					},
 					"response": []
 				},
@@ -303,7 +303,7 @@
 								}
 							}
 						},
-						"url": "{{server}}/opinions/1/dislike"
+						"url": "{{server}}/opinions/2/dislike"
 					},
 					"response": []
 				}
@@ -342,12 +342,12 @@
 			"type": "default"
 		},
 		{
-			"key": "carlors",
+			"key": "user_2",
 			"value": "",
 			"type": "default"
 		},
 		{
-			"key": "user_2",
+			"key": "user_3",
 			"value": "",
 			"type": "default"
 		}

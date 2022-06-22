@@ -6,21 +6,10 @@ const updateOpinionDB = async (idUser, idOpinion, opinion) => {
     try {
         connection = await getConnection();
 
-        const [id] = await connection.query(
-            'SELECT id FROM opinions WHERE id = ?',
-            [idOpinion]
-        );
-
-        // Checking if the opinion is exists.
-        if (id.length === 0) {
-            throw generateError(404, 'Opinion not exists');
-        }
-
         const [validUser] = await connection.query(
             'SELECT id  FROM opinions WHERE idUser = ? AND id = ?',
-            [idUser, id[0].id]
+            [idUser, idOpinion]
         );
-        console.log(validUser[0]);
 
         // Checking if the user is the owner of the opinion.
         if (!validUser[0]) {

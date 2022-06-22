@@ -1,12 +1,12 @@
 const usersModule = require('../modules/usersModule');
 const opinionsModule = require('../modules/opinionsModule');
-const likesModule = require('../modules/likesModule');
+const voteModule = require('../modules/voteModule');
 
 const maim = async () => {
     try {
         await usersModule();
         await opinionsModule();
-        await likesModule();
+        await voteModule();
     } catch (err) {
         console.error(err);
     } finally {

@@ -1,22 +1,23 @@
 const getConnection = require('../database/getConnection');
 
-const likes = async () => {
+const vote = async () => {
     let connection;
     try {
         connection = await getConnection();
-        console.log('******* Delete likes table ******');
-        await connection.query('DROP TABLE IF EXISTS likes');
-        console.log('**** Create likes table ****');
+        console.log('******* Delete vote table ******');
+        await connection.query('DROP TABLE IF EXISTS vote');
+        console.log('**** Create vote table ****');
 
         await connection.query(`
-            CREATE TABLE likes (
-                id INTEGER PRIMARY KEY AUTO_INCREMENT,
-                likes BOOLEAN DEFAULT false,
-                dislike BOOLEAN DEFAULT false,
+            CREATE TABLE vote (
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                value BOOLEAN ,
                 idUser INTEGER ,
                 idOpinion INTEGER ,
                 FOREIGN KEY (idUser) REFERENCES users(id),
-                FOREIGN KEY (idOpinion) REFERENCES opinions(id)
+                FOREIGN KEY (idOpinion) REFERENCES opinions(id),
+                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP 
             )
         `);
 
@@ -30,4 +31,4 @@ const likes = async () => {
     }
 };
 
-module.exports = likes;
+module.exports = vote;

@@ -15,8 +15,7 @@ app.use(express.json());
  * ## Middlewares ##
  * #################
  */
-
-const auth = require('./middlewares/auth');
+const { auth, opinionExists } = require('./middlewares');
 
 /**
  * ####################
@@ -68,13 +67,13 @@ app.post('/opinions', auth, newOpinion);
 app.get('/opinions', listOpinions);
 
 // Get opinion
-app.get('/opinions/:idOpinions', getOpinion);
+app.get('/opinions/:idOpinion', opinionExists, getOpinion);
 
 // Update opinion
-app.put('/opinions/:idOpinions', auth, updateOpinion);
+app.put('/opinions/:idOpinion', auth, opinionExists, updateOpinion);
 
 // Delete opinion
-app.delete('/opinions/:idOpinion', auth, deleteOpinion);
+app.delete('/opinions/:idOpinion', auth, opinionExists, deleteOpinion);
 
 /**
  * #############################
@@ -85,10 +84,10 @@ app.delete('/opinions/:idOpinion', auth, deleteOpinion);
 const { addLikes, disLikes } = require('./controllers/likes');
 
 // Add like and remove like
-app.post('/opinions/:idOpinion/like', auth, addLikes);
+app.post('/opinions/:idOpinion/like', auth, opinionExists, addLikes);
 
 // Add dislike and remove dislike
-app.post('/opinions/:idOpinion/dislike', auth, disLikes);
+app.post('/opinions/:idOpinion/dislike', auth, opinionExists, disLikes);
 
 /**
  * ######################

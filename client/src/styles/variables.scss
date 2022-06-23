@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+$ubuntu-font:'Ubuntu', sans-serif;
+
+$primary-color: #FEF9A7;
+$secondary-color: #FAC213;
+$text-color: #fff;
+$text-color-dark: #D61C4E;
+
+$spacing-small: 0.5rem;
+$spacing-medium: 1rem;
+$spacing-large: 2rem;
+
+$header-height: 4rem;
+
+$sm:37.5em;
+$md:48em;
+$lg:64em;
+$xl:75em;
+
+@mixin  breakpoint($point) {
+  @if $point == md {
+    @media (min-width: $md) {
+      @content;
+    }
+  }
+}

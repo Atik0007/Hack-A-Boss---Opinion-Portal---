@@ -1,36 +1,55 @@
 import logo from './img/logo.svg';
-/* import { NavLink } from 'react-router-dom'; */
 
-import Login from '../login/Login';
-import Profile from '../profile/Profile';
+/* import { FaBars, FaTimes } from 'react-icons/fa'; */
 
-import { useToken } from '../../utils/TokenContext';
-import { useModal } from '../../utils/ModalContext';
+import { Link } from 'react-router-dom';
+import { useContext /* useState, useRef */ } from 'react';
+import { AutContext } from '../../utils/AuthContext';
+import './Header.scss';
 
-import style from './Header.module.scss';
+/* import { Auth } from '../auth/Auth'; */
 
-const Header = () => {
-    const [token] = useToken();
-    const [, setModal] = useModal();
+export const Header = () => {
+    const { user, logout } = useContext(AutContext);
 
+    /* const [burger, setBurger] = useState(false);
+    const navRef = useRef(); */
+
+    /*  const handleClick = () => {
+        navRef.current.classList.toggle('open');
+        setBurger(!burger);
+    }; */
     return (
-        <div className={style.header}>
-            <div className={style.header__content}>
+        <header className="header">
+            <Link to="/">
                 <img src={logo} alt="logo" />
-                {!token && (
-                    <div className={style.header__login}>
-                        <div
-                            className={style.button}
-                            onClick={() => setModal(<Login />)}
-                        >
-                            <span>Login</span>
-                        </div>
-                    </div>
+            </Link>
+            <nav className="navMenu">
+                {user ? (
+                    <>
+                        <button onClick={() => logout()}>
+                            <span className="shadow"></span>
+                            <span className="edge"></span>
+                            <span className="front text">Logout</span>
+                        </button>
+                        <button>
+                            <Link to="/new">
+                                <span className="shadow"></span>
+                                <span className="edge"></span>
+                                <span className="front text">+</span>
+                            </Link>
+                        </button>
+                    </>
+                ) : (
+                    <button>
+                        <Link to="/login">
+                            <span className="shadow"></span>
+                            <span className="edge"></span>
+                            <span className="front text">Login</span>
+                        </Link>
+                    </button>
                 )}
-                {token && <Profile />}
-            </div>
-        </div>
+            </nav>
+        </header>
     );
 };
-
-export default Header;

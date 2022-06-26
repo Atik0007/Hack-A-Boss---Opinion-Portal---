@@ -2,14 +2,10 @@
 *,*::before,*::after {
   box-sizing: border-box;
   margin: 0;
+  text-decoration: none;
 }
 
-body {
+.App {
     font-family:$ubuntu-font;
-    color : $text-color;
-    height: 100vh;
 }
 
-button{
-    font-family: inn;
-}

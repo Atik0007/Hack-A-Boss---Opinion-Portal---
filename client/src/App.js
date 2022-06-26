@@ -1,21 +1,32 @@
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
 
-/* import { Routes, Route } from 'react-router-dom'; */
+import { Header } from './components/header/Header';
+import { Footer } from './components/footer/Footer';
+import { NewOpinion } from './pages/newOpinion/NewOpinion';
 
-import Header from './components/header/Header';
-import Modal from './components/modal/Modal';
-import { useModal } from './utils/ModalContext';
+import { HomePage } from './pages/homePage/HomePage';
+import { Login } from './pages/login/Login';
+import { Register } from './pages/register/Register';
+import { OpinionPage } from './pages/opinionPage/OpinionPage';
+import { UserPage } from './pages/userPage/UserPage';
+import { EditOpinion } from './pages/editOpinion/EditOpinion';
 
 function App() {
-    const [modal] = useModal();
     return (
-        <div className="App">
+        <main className="App">
             <Header />
-            {/* <Routes>
-                <Route path="/" element={<Login />} />
-            </Routes> */}
-            {modal && <Modal>{modal}</Modal>}
-        </div>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/opinion/:id" element={<OpinionPage />} />
+                <Route path="/user/:id" element={<UserPage />} />
+                <Route path="/new" element={<NewOpinion />} />
+                <Route path="/edit/:id" element={<EditOpinion />} />
+                <Route path="*" element={<HomePage />} />
+            </Routes>
+            <Footer />
+        </main>
     );
 }
 

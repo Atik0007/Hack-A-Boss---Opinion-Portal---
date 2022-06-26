@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+@import "../../styles/button.scss";
+
+
+.opinion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem calc((100vw - 1024px) / 2);
+    max-width: 1920px;
+    transition:0.3s ease padding;
+    height: 75vh;
+    
+}

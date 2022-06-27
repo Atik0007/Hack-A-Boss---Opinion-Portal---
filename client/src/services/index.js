@@ -89,6 +89,27 @@ export const getUser = async ({ id }) => {
     return json.data.user;
 };
 
+export const updateUser = async ({ token, email, password }) => {
+    const response = await fetch(`http://localhost:4000/user`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+        },
+        body: JSON.stringify({
+            email,
+            password,
+        }),
+    });
+
+    const json = await response.json();
+
+    if (json.status === 'Error') {
+        throw new Error(json.message);
+    }
+    return json.data.user;
+};
+
 export const createOpinion = async ({ token, text }) => {
     const response = await fetch(`http://localhost:4000/opinions`, {
         method: 'POST',
@@ -143,4 +164,41 @@ export const updateMyOpinion = async ({ token, id, text }) => {
     if (json.status === 'Error') {
         throw new Error(json.message);
     }
+};
+
+export const addLike = async ({ token, id }) => {
+    const response = await fetch(`http://localhost:4000/opinions/${id}/like`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+        },
+    });
+
+    const json = await response.json();
+
+    if (json.status === 'Error') {
+        throw new Error(json.message);
+    }
+    return json.data;
+};
+
+export const disLike = async ({ token, id }) => {
+    const response = await fetch(
+        `http://localhost:4000/opinions/${id}/dislike`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: token,
+            },
+        }
+    );
+
+    const json = await response.json();
+
+    if (json.status === 'Error') {
+        throw new Error(json.message);
+    }
+    return json.data;
 };

@@ -1,39 +1,46 @@
-import { useContext, useState } from 'react';
-import { AutContext } from '../../utils/AuthContext';
-import { updateMyOpinion } from '../../services';
+import './EditOpinion.scss';
 
-export const EditOpinion = ({ opinion }) => {
-    const { user, token } = useContext(AutContext);
+import { useState, useContext } from 'react';
+import { updateMyOpinion } from '../../services';
+import { AutContext } from '../../utils/AuthContext';
+import { useNavigate, Navigate, useParams } from 'react-router-dom';
+
+export const EditOpinion = () => {
+    const params = useParams();
+    const navigate = useNavigate();
+
+    const { token } = useContext(AutContext);
+    const [text, setText] = useState('');
     const [error, setError] = useState('');
-    const updateOpinion = async (id, text) => {
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            await updateMyOpinion({ token, id, text });
+            await updateMyOpinion({ token, id: params.id, text });
+            navigate('/');
         } catch (err) {
             setError(err.message);
         }
     };
 
+    if (!token) return <Navigate to="/" />;
     return (
-        <article>
-            <p>
-                {opinion.name} {opinion.lastName}
-            </p>
+        <section className="create-opinion">
+            <form className="opinion-form" onSubmit={handleSubmit}>
+                <h1>Create Opinion</h1>
+                <textarea
+                    placeholder="Write your opinion"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
 
-            <p className="text">{opinion.text}</p>
-            {user && user.id === opinion.idUser ? (
-                <section>
-                    <button
-                        onClick={() => updateOpinion(opinion.id, opinion.text)}
-                    >
-                        Edit
-                    </button>
-                    {error ? <p>{error}</p> : null}
-                </section>
-            ) : null}
-
-            <footer>
-                <time>{new Date(opinion.createdAt).toLocaleString()}</time>
-            </footer>
-        </article>
+                <button>
+                    <span className="shadow"></span>
+                    <span className="edge"></span>
+                    <span className="front text">update</span>
+                </button>
+            </form>
+            {error ? <p>{error}</p> : null}
+        </section>
     );
 };

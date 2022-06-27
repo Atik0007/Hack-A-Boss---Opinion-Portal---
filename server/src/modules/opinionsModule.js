@@ -12,7 +12,7 @@ const opinions = async () => {
             CREATE TABLE opinions (
                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 idUser INTEGER ,
-                FOREIGN KEY (idUser) REFERENCES users(id),
+                FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
                 text VARCHAR(280) NOT NULL,
                 likes INTEGER DEFAULT 0,
                 dislikes INTEGER DEFAULT 0,

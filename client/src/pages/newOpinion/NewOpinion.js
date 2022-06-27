@@ -3,7 +3,9 @@ import './NewOpinion.scss';
 import { useState, useContext } from 'react';
 import { createOpinion } from '../../services';
 import { AutContext } from '../../utils/AuthContext';
-import { useNavigate /* Navigate */ } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
+
+import { useOpinions } from '../../hooks/useOpinions';
 
 export const NewOpinion = (/* { addOpinion } */) => {
     const navigate = useNavigate();
@@ -19,9 +21,10 @@ export const NewOpinion = (/* { addOpinion } */) => {
             setSending(true);
 
             /* const  = new FormData(e.target); */
-            /* const data = */ await createOpinion({ token, text });
+            /*  const data = */ await createOpinion({ token, text });
 
             /* addOpinion(data); */
+
             navigate('/');
         } catch (err) {
             console.error(err);
@@ -31,7 +34,7 @@ export const NewOpinion = (/* { addOpinion } */) => {
         }
     };
 
-    /* if (!token) return <Navigate to="/" />; */
+    if (!token) return <Navigate to="/" />;
     return (
         <section className="create-opinion">
             <form className="opinion-form" onSubmit={handleSubmit}>

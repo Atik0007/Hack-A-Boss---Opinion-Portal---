@@ -18,6 +18,7 @@ const newOpinion = async (req, res, next) => {
             data: {
                 message: 'Opinion created',
                 idUser: req.idUser,
+                text,
             },
         });
     } catch (err) {

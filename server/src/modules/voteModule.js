@@ -14,8 +14,8 @@ const vote = async () => {
                 value BOOLEAN ,
                 idUser INTEGER ,
                 idOpinion INTEGER ,
-                FOREIGN KEY (idUser) REFERENCES users(id),
-                FOREIGN KEY (idOpinion) REFERENCES opinions(id),
+                FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
+                FOREIGN KEY (idOpinion) REFERENCES opinions(id) ON DELETE CASCADE,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP 
             )

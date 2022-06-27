@@ -9,7 +9,9 @@ import { Login } from './pages/login/Login';
 import { Register } from './pages/register/Register';
 import { OpinionPage } from './pages/opinionPage/OpinionPage';
 import { UserPage } from './pages/userPage/UserPage';
+
 import { EditOpinion } from './pages/editOpinion/EditOpinion';
+import { ProfilePage } from './pages/profile/Profile';
 
 function App() {
     return (
@@ -22,6 +24,7 @@ function App() {
                 <Route path="/opinion/:id" element={<OpinionPage />} />
                 <Route path="/user/:id" element={<UserPage />} />
                 <Route path="/new" element={<NewOpinion />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/edit/:id" element={<EditOpinion />} />
                 <Route path="*" element={<HomePage />} />
             </Routes>

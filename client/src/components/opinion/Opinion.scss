@@ -1,30 +1,456 @@
 @import "../../styles/variables.scss";
 @import "../../styles/button.scss";
 
-article{
-    background-color: $primary-color;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 5px 5px 22px $secondary-color;
-    gap: .4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem calc((100vw - 1024px) / 2);
-    max-width: 1920px;
-    transition:0.3s ease padding;
+
+.blogPost {
+    background: #fff;
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin: 1rem;
+
+    .blogHeader{
+      display: flex;
+      align-items: center;
+
+      .imgPod {
+        height: 15vmin;
+        width: 15vmin;
+        background: linear-gradient(90deg, #ff9966, #ff5e62);
+        z-index: -0;
+          margin: 1rem;
+        border-radius: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+      }
+
+    }
+  
+    .containerBody {
+      padding: 2rem;
+      @media (max-width: 768px) {
+        padding: 1rem;
+      }
+      h3 {
+        margin: 0 0 0.5rem 0;
+        color: #999;
+        font-size: 3.5vmin;
+    }
+    h2 {
+    margin: 0 0 1rem 0;
+      font-size: 5vmin;
+      letter-spacing: 0.5px;
+      color: #333;
+    }
+      p {
+        margin: 0 0 1rem 0;
+        font-size: 4vmin;
+        color: #333;
+      }
+    }
+
+    //delete button
+    footer{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .rightSide{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        .deleteBtn {
+          position: relative;
+          border: none;
+          background: transparent;
+          padding: 0;
+          cursor: pointer;
+          outline-offset: 4px;
+          transition: filter 250ms;
+          user-select: none;
+          touch-action: manipulation;
+      
+          .shadow {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           border-radius: 12px;
+           background: hsl(0deg 0% 0% / 0.25);
+           will-change: transform;
+           transform: translateY(2px);
+           transition: transform
+              600ms
+              cubic-bezier(.3, .7, .4, 1);
+          }
+          
+          .edge {
+            
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           border-radius: 12px;
+           background: linear-gradient(
+              to left,
+              hsl(340deg 100% 16%) 0%,
+              hsl(340deg 100% 32%) 8%,
+              hsl(340deg 100% 32%) 92%,
+              hsl(340deg 100% 16%) 100%
+            );
+          }
+          
+          .front {
+           display: block;
+           position: relative;
+           padding: .5rem  .5rem .3rem .5rem;
+           border-radius: 12px;
+           font-size: 1.1rem;
+           color: white;
+           background: hsl(345deg 100% 47%);
+           will-change: transform;
+           transform: translateY(-4px);
+           transition: transform
+              600ms
+              cubic-bezier(.3, .7, .4, 1);
+          }
+          .deleteBtn:hover {
+           filter: brightness(110%);
+          }
+          
+          .deleteBtn:hover .front {
+           transform: translateY(-6px);
+           transition: transform
+              250ms
+              cubic-bezier(.3, .7, .4, 1.5);
+          }
+          
+          .deleteBtn:active .front {
+           transform: translateY(-2px);
+           transition: transform 34m
+          }
+          
+          .deleteBtn:hover .shadow {
+           transform: translateY(4px);
+           transition: transform
+              250ms
+              cubic-bezier(.3, .7, .4, 1.5);
+          }
+          
+          .deleteBtn:active .shadow {
+           transform: translateY(1px);
+           transition: transform 34ms;
+          }
+          
+          .deleteBtn:focus:not(:focus-visible) {
+           outline: none;
+          }
+         }
     
-    .text{
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: .5rem;
+          //edit button
+    
+         .editBtn {
+          margin: .5rem;
+          position: relative;
+          border: none;
+          background: transparent;
+          padding: 0;
+          cursor: pointer;
+          outline-offset: 4px;
+          transition: filter 250ms;
+          user-select: none;
+          touch-action: manipulation;
+      
+          .shadow {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           border-radius: 12px;
+           background: hsl(0deg 0% 0% / 0.25);
+           will-change: transform;
+           transform: translateY(2px);
+           transition: transform
+              600ms
+              cubic-bezier(.3, .7, .4, 1);
+          }
+          
+          .edge {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           border-radius: 12px;
+           background: linear-gradient(
+              to left,
+              hsl(340deg 100% 16%) 0%,
+              hsl(340deg 100% 32%) 8%,
+              hsl(340deg 100% 32%) 92%,
+              hsl(340deg 100% 16%) 100%
+            );
+          }
+          
+          .front {
+           display: block;
+           position: relative;
+           padding: .5rem  .5rem .3rem .5rem;
+           border-radius: 12px;
+           font-size: 1.1rem;
+           color: white;
+           background: hsl(345deg 100% 47%);
+           will-change: transform;
+           transform: translateY(-4px);
+           transition: transform
+              600ms
+              cubic-bezier(.3, .7, .4, 1);
+          }
+          .editBtn:hover {
+           filter: brightness(110%);
+          }
+          
+          .editBtn:hover .front {
+           transform: translateY(-6px);
+           transition: transform
+              250ms
+              cubic-bezier(.3, .7, .4, 1.5);
+          }
+          
+          .editBtn:active .front {
+           transform: translateY(-2px);
+           transition: transform 34m
+          }
+          
+          .editBtn:hover .shadow {
+           transform: translateY(4px);
+           transition: transform
+              250ms
+              cubic-bezier(.3, .7, .4, 1.5);
+          }
+          
+          .editBtn:active .shadow {
+           transform: translateY(1px);
+           transition: transform 34ms;
+          }
+          
+          .editBtn:focus:not(:focus-visible) {
+           outline: none;
+          }
+         }
+      }
+
+      .leftSide{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+
+        .likeBtn{
+
+          margin: .5rem .1rem .5rem .5rem;
+            position: relative;
+            border: none;
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            outline-offset: 4px;
+            transition: filter 250ms;
+            user-select: none;
+            touch-action: manipulation;
+        
+            .shadow {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             border-radius: 12px;
+             background: hsl(0deg 0% 0% / 0.25);
+             will-change: transform;
+             transform: translateY(2px);
+             transition: transform
+                600ms
+                cubic-bezier(.3, .7, .4, 1);
+            }
+            
+            .edge {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             border-radius: 12px;
+             background: linear-gradient(
+                to left,
+                hsl(340deg 100% 16%) 0%,
+                hsl(340deg 100% 32%) 8%,
+                hsl(340deg 100% 32%) 92%,
+                hsl(340deg 100% 16%) 100%
+              );
+            }
+            
+            .front {
+             display: block;
+             position: relative;
+             padding: .5rem  .5rem .3rem .5rem;
+             border-radius: 12px;
+             font-size: 1.1rem;
+             color: white;
+             background: hsl(345deg 100% 47%);
+             will-change: transform;
+             transform: translateY(-4px);
+             transition: transform
+                600ms
+                cubic-bezier(.3, .7, .4, 1);
+            }
+            .button:hover {
+             filter: brightness(110%);
+            }
+            
+            .button:hover .front {
+             transform: translateY(-6px);
+             transition: transform
+                250ms
+                cubic-bezier(.3, .7, .4, 1.5);
+            }
+            
+            .button:active .front {
+             transform: translateY(-2px);
+             transition: transform 34m
+            }
+            
+            .button:hover .shadow {
+             transform: translateY(4px);
+             transition: transform
+                250ms
+                cubic-bezier(.3, .7, .4, 1.5);
+            }
+            
+            .button:active .shadow {
+             transform: translateY(1px);
+             transition: transform 34ms;
+            }
+            
+            .button:focus:not(:focus-visible) {
+             outline: none;
+            }
+           
+
+        }
+
+
+        .dislikeBtn {
+          margin: .5rem  .1rem .5rem .5rem;
+          position: relative;
+            border: none;
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            outline-offset: 4px;
+            transition: filter 250ms;
+            user-select: none;
+            touch-action: manipulation;
+        
+            .shadow {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             border-radius: 12px;
+             background: hsl(0deg 0% 0% / 0.25);
+             will-change: transform;
+             transform: translateY(2px);
+             transition: transform
+                600ms
+                cubic-bezier(.3, .7, .4, 1);
+            }
+            
+            .edge {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             border-radius: 12px;
+             background: linear-gradient(
+                to left,
+                hsl(340deg 100% 16%) 0%,
+                hsl(340deg 100% 32%) 8%,
+                hsl(340deg 100% 32%) 92%,
+                hsl(340deg 100% 16%) 100%
+              );
+            }
+            
+            .front {
+             display: block;
+             position: relative;
+             padding: .5rem  .5rem .3rem .5rem;
+             border-radius: 12px;
+             font-size: 1.1rem;
+             color: white;
+             background: hsl(345deg 100% 47%);
+             will-change: transform;
+             transform: translateY(-4px);
+             transition: transform
+                600ms
+                cubic-bezier(.3, .7, .4, 1);
+            }
+            .button:hover {
+             filter: brightness(110%);
+            }
+            
+            .button:hover .front {
+             transform: translateY(-6px);
+             transition: transform
+                250ms
+                cubic-bezier(.3, .7, .4, 1.5);
+            }
+            
+            .button:active .front {
+             transform: translateY(-2px);
+             transition: transform 34m
+            }
+            
+            .button:hover .shadow {
+             transform: translateY(4px);
+             transition: transform
+                250ms
+                cubic-bezier(.3, .7, .4, 1.5);
+            }
+            
+            .button:active .shadow {
+             transform: translateY(1px);
+             transition: transform 34ms;
+            }
+            
+            .button:focus:not(:focus-visible) {
+             outline: none;
+            }
+        }
+
+      }
+
     }
 
-    button {
-        color: $text-color
-    }
-   
-
-}
+    
+     
+     
+       
+  }
+  
+  
+  
+  
+  
+  
+  
+  

@@ -45,7 +45,7 @@ export const NewOpinion = (/* { addOpinion } */) => {
                     onChange={(e) => setText(e.target.value)}
                 />
 
-                <button>
+                <button className="button">
                     <span className="shadow"></span>
                     <span className="edge"></span>
                     <span className="front text">

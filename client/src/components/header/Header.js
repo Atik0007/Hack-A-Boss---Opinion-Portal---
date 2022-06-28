@@ -29,67 +29,75 @@ export const Header = () => {
             <nav ref={navRef} className="navMenu">
                 {user ? (
                     <>
-                        <button
-                            className="button"
-                            onClick={() => {
-                                setBurger(false);
-                                navRef.current.classList.toggle('open');
-                                logout();
-                            }}
-                        >
-                            <span className="shadow"></span>
-                            <span className="edge"></span>
-                            <span className="front text">Logout</span>
+                        <button className="button">
+                            <button
+                                className="button"
+                                onClick={() => {
+                                    setBurger(false);
+                                    navRef.current.classList.toggle('open');
+                                }}
+                            >
+                                <Link to="/new">
+                                    <span className="shadow"></span>
+                                    <span className="edge"></span>
+                                    <span className="front text">+</span>
+                                </Link>
+                            </button>
                         </button>
-                        <button
-                            className="button"
-                            onClick={() => {
-                                setBurger(false);
-                                navRef.current.classList.toggle('open');
-                            }}
-                        >
-                            <Link to="/new">
+                        <button className="button">
+                            <button
+                                className="button"
+                                onClick={() => {
+                                    setBurger(false);
+                                    navRef.current.classList.toggle('open');
+                                    logout();
+                                }}
+                            >
                                 <span className="shadow"></span>
                                 <span className="edge"></span>
-                                <span className="front text">+</span>
-                            </Link>
+                                <span className="front text">Logout</span>
+                            </button>
                         </button>
                     </>
                 ) : (
-                    <button
-                        className="button"
-                        onClick={() => {
-                            setBurger(false);
-                            navRef.current.classList.toggle('open');
-                        }}
-                    >
-                        <Link to="/login">
-                            <span className="shadow"></span>
-                            <span className="edge"></span>
-                            <span className="front text">Login</span>
-                        </Link>
+                    <button className="button">
+                        <button
+                            className="button"
+                            onClick={() => {
+                                setBurger(false);
+                                navRef.current.classList.toggle('open');
+                            }}
+                        >
+                            <Link to="/login">
+                                <span className="shadow"></span>
+                                <span className="edge"></span>
+                                <span className="front text">Login</span>
+                            </Link>
+                        </button>
                     </button>
                 )}
             </nav>
-            <button className="btn button" onClick={handleClick}>
-                {burger ? (
-                    <button className="button">
-                        <span className="shadow"></span>
-                        <span className="edge"></span>
-                        <span className="front text">
-                            <FaTimes />
-                        </span>
-                    </button>
-                ) : (
-                    <button className="button">
-                        <span className="shadow"></span>
-                        <span className="edge"></span>
-                        <span className="front text">
-                            <FaBars />
-                        </span>
-                    </button>
-                )}
-            </button>
+            <>
+                <button className="btn button" onClick={handleClick}>
+                    {burger ? (
+                        <button className="button">
+                            <span className="shadow"></span>
+                            <span className="edge"></span>
+                            <span className="front text">
+                                <FaTimes />
+                            </span>
+                        </button>
+                    ) : (
+                        <button className="button">
+                            <span className="shadow"></span>
+                            <span className="edge"></span>
+                            <span className="front text">
+                                <FaBars />
+                            </span>
+                        </button>
+                    )}
+                </button>
+            </>
         </header>
     );
 };

@@ -30,6 +30,7 @@
     }
 
     .button {
+      margin-right: .5rem;
       position: relative;
       border: none;
       background: transparent;
@@ -76,7 +77,8 @@
        position: relative;
        padding: 12px 27px;
        border-radius: 12px;
-       font-size: 1.1rem;
+       font-size: 1.5rem;
+        font-weight: bold;
        color: white;
        background: hsl(345deg 100% 47%);
        will-change: transform;

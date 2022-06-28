@@ -4,18 +4,19 @@ import { Opinion } from '../opinion/Opinion';
 import { useState } from 'react';
 
 export const OpinionList = ({ opinions, removeOpinion, updateOpinion }) => {
-    console.log(opinions.opinions);
     const [keyword, setKeyword] = useState('');
     return opinions?.opinions ? (
         <ul>
-            <form className="opinion-form">
+            <div className="container">
                 <input
                     type="text"
-                    placeholder="Search"
+                    placeholder="Search..."
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}
-                />
-            </form>
+                ></input>
+                <div className="search"></div>
+            </div>
+
             {opinions.opinions
                 .filter((opinion) =>
                     opinion.text.toLowerCase().includes(keyword.toLowerCase())

@@ -1,5 +1,3 @@
-import './EditOpinion.scss';
-
 import { useState, useContext } from 'react';
 import { updateMyOpinion } from '../../services';
 import { AutContext } from '../../utils/AuthContext';
@@ -27,14 +25,14 @@ export const EditOpinion = () => {
     return (
         <section className="create-opinion">
             <form className="opinion-form" onSubmit={handleSubmit}>
-                <h1>Create Opinion</h1>
+                <h1>Edit Opinion</h1>
                 <textarea
                     placeholder="Write your opinion"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
 
-                <button>
+                <button className="button">
                     <span className="shadow"></span>
                     <span className="edge"></span>
                     <span className="front text">update</span>

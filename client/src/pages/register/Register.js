@@ -6,9 +6,13 @@ import { useNavigate } from 'react-router-dom';
 export const Register = () => {
     const navigate = useNavigate();
 
+    const [userName, setUserName] = useState();
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [gender, setGender] = useState('');
     const [email, setEmail] = useState('');
+    /*  const [image, setImage] = useState(''); */
+    const [selectedFile, setSelectedFile] = useState(null);
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [error, setError] = useState('');
@@ -24,7 +28,15 @@ export const Register = () => {
         }
 
         try {
-            const data = await registerUser(name, lastName, email, password);
+            const data = await registerUser(
+                name,
+                lastName,
+                email,
+                password,
+                userName,
+                gender,
+                selectedFile
+            );
 
             if (data.status === 'Error') {
                 setError(data.message);
@@ -36,11 +48,20 @@ export const Register = () => {
             setError(err.message);
         }
     };
+    console.log(selectedFile);
 
     return (
         <section className="registerSection">
-            <form className="register" onClick={handleRegister}>
+            <form className="register" onSubmit={handleRegister}>
                 <input
+                    type="text"
+                    id="userName"
+                    placeholder="User Name"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                />
+                <input
+                    required
                     type="text"
                     id="name"
                     placeholder="Name"
@@ -49,6 +70,7 @@ export const Register = () => {
                 />
 
                 <input
+                    required
                     type="text"
                     id="lastName"
                     placeholder="Last Name"
@@ -57,6 +79,7 @@ export const Register = () => {
                 />
 
                 <input
+                    required
                     type="email"
                     id="email"
                     placeholder="Email"
@@ -65,6 +88,7 @@ export const Register = () => {
                 />
 
                 <input
+                    required
                     type="password"
                     id="password"
                     placeholder="Password"
@@ -73,6 +97,7 @@ export const Register = () => {
                 />
 
                 <input
+                    required
                     type="password"
                     id="passwordConfirm"
                     placeholder="Confirm Password"
@@ -80,10 +105,31 @@ export const Register = () => {
                     onChange={(e) => setPasswordConfirm(e.target.value)}
                 />
 
-                <button>
-                    <span className="shadow"></span>
-                    <span className="edge"></span>
-                    <span className="front text">Register</span>
+                <select
+                    required
+                    name="gender"
+                    onChange={(e) => setGender(e.target.value)}
+                >
+                    <option value="none" selected>
+                        Gender
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <input
+                    type="file"
+                    onChange={(e) => {
+                        setSelectedFile(e.target.files[0]);
+                    }}
+                />
+                <button className="button">
+                    <button className="button">
+                        <span className="shadow"></span>
+                        <span className="edge"></span>
+                        <span className="front text">Register</span>
+                    </button>
                 </button>
                 {error ? <p>{error}</p> : null}
             </form>

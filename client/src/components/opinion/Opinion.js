@@ -1,4 +1,5 @@
 import './Opinion.scss';
+import { format } from 'date-fns';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiOutlineEdit, AiFillLike, AiFillDislike } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,6 +9,8 @@ import { deleteMyOpinion, addLike, disLike } from '../../services';
 
 export const Opinion = ({ opinion, removeOpinion }) => {
     const navigate = useNavigate();
+
+    const dateTime = format(new Date(opinion.createdAt), 'yyyy-MM-dd');
 
     const { user, token } = useContext(AutContext);
 
@@ -46,15 +49,24 @@ export const Opinion = ({ opinion, removeOpinion }) => {
     return (
         <article className="blogPost">
             <div className="blogHeader">
-                <div className="imgPod"></div>
+                {opinion.image && (
+                    <div className="imgPod">
+                        <img
+                            src={`http://localhost:4000/${opinion.image}`}
+                            alt="avatar"
+                        />
+                    </div>
+                )}
                 <Link to={`/user/${opinion.idUser}`}>
-                    <p>
+                    <h3>
                         {opinion.name} {opinion.lastName}
-                    </p>
+                    </h3>
                 </Link>
             </div>
             <div className="containerBody">
-                <h3>{new Date(opinion.createdAt).toLocaleString()}</h3>
+                <time dateTime={dateTime}>
+                    {format(new Date(opinion.createdAt), 'hh:mm - dd/MM/yyyy')}
+                </time>
                 <h2>CSS Positioning</h2>
                 <p className="text">{opinion.text}</p>
             </div>

@@ -1,7 +1,7 @@
 const generateError = require('../../utils/generateError');
 const getConnection = require('../getConnection');
 
-const updateOpinionDB = async (idUser, idOpinion, opinion) => {
+const updateOpinionDB = async (idUser, idOpinion, text, title) => {
     let connection;
     try {
         connection = await getConnection();
@@ -17,10 +17,10 @@ const updateOpinionDB = async (idUser, idOpinion, opinion) => {
         }
 
         // Updating the opinion.
-        await connection.query('UPDATE opinions SET text = ? WHERE id = ?', [
-            opinion,
-            idOpinion,
-        ]);
+        await connection.query(
+            'UPDATE opinions SET text = ?, title = ?  WHERE id = ?',
+            [text, title, idOpinion]
+        );
     } finally {
         if (connection) {
             connection.release();

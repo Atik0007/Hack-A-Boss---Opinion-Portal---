@@ -22,18 +22,27 @@ export const getOpinion = async (id) => {
     return json.data;
 };
 
-export const registerUser = async (name, lastName, email, password) => {
+export const registerUser = async (
+    name,
+    lastName,
+    email,
+    password,
+    userName,
+    gender,
+    image
+) => {
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('name', name);
+    formData.append('lastName', lastName);
+    formData.append('userName', userName);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('gender', gender);
+
     const response = await fetch(`http://localhost:4000/user`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            name,
-            lastName,
-            email,
-            password,
-        }),
+        body: formData,
     });
 
     const json = await response.json();
@@ -110,7 +119,7 @@ export const updateUser = async ({ token, email, password }) => {
     return json.data.user;
 };
 
-export const createOpinion = async ({ token, text }) => {
+export const createOpinion = async ({ token, text, title }) => {
     const response = await fetch(`http://localhost:4000/opinions`, {
         method: 'POST',
         headers: {
@@ -119,6 +128,7 @@ export const createOpinion = async ({ token, text }) => {
         },
         body: JSON.stringify({
             text,
+            title,
         }),
     });
 
@@ -147,7 +157,7 @@ export const deleteMyOpinion = async ({ token, id }) => {
     }
 };
 
-export const updateMyOpinion = async ({ token, id, text }) => {
+export const updateMyOpinion = async ({ token, id, text, title }) => {
     const response = await fetch(`http://localhost:4000/opinions/${id}`, {
         method: 'put',
         headers: {
@@ -156,6 +166,7 @@ export const updateMyOpinion = async ({ token, id, text }) => {
         },
         body: JSON.stringify({
             text,
+            title,
         }),
     });
 

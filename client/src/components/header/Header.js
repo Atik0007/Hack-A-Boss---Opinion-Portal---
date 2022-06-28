@@ -1,6 +1,7 @@
 import logo from './img/logo.svg';
 
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { CgProfile } from 'react-icons/cg';
 
 import { Link } from 'react-router-dom';
 import { useContext, useState, useRef } from 'react';
@@ -41,6 +42,23 @@ export const Header = () => {
                                     <span className="shadow"></span>
                                     <span className="edge"></span>
                                     <span className="front text">+</span>
+                                </Link>
+                            </button>
+                        </button>
+                        <button className="button">
+                            <button
+                                className="button"
+                                onClick={() => {
+                                    setBurger(false);
+                                    navRef.current.classList.toggle('open');
+                                }}
+                            >
+                                <Link to="/profile">
+                                    <span className="shadow"></span>
+                                    <span className="edge"></span>
+                                    <span className="front text">
+                                        <CgProfile />
+                                    </span>
                                 </Link>
                             </button>
                         </button>

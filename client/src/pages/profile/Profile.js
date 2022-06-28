@@ -1,13 +1,14 @@
+import './Profile.scss';
 import { useContext, useEffect, useState } from 'react';
 import { AutContext } from '../../utils/AuthContext';
-import { getMyData, updateUser } from '../../services';
+import { getMyData /* updateUser  */ } from '../../services';
 
 export const ProfilePage = () => {
-    const { user, logout } = useContext(AutContext);
+    const { user /* logout  */ } = useContext(AutContext);
     const { token } = useContext(AutContext);
     const [userData, setUserData] = useState(null);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    /*     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState(''); */
 
     useEffect(() => {
         const loadUserData = async () => {
@@ -19,44 +20,41 @@ export const ProfilePage = () => {
             }
         };
         loadUserData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
-    const updateUserDataForm = async () => {
+    /* const updateUserDataForm = async () => {
         try {
             await updateUser({ token, email, password });
             logout();
         } catch (err) {
             console.log(err);
         }
-    };
+    }; */
+
+    console.log(userData);
 
     return (
-        <div>
-            <h1>Profile</h1>
-            <p>
-                {userData && userData.name} {userData && userData.lastName}
-            </p>
-            <p>{userData && userData.email}</p>
-            <button onClick={() => logout()}>Logout</button>
-            <form>
-                <label>
-                    Email:
-                    <input
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Password:
-                    <input
-                        type="text"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
-                <button onClick={updateUserDataForm}>Update</button>
-            </form>
+        <div className="profile">
+            {userData ? (
+                <>
+                    <div className="profileHeader">
+                        <div className="profileHeaderAvatar">
+                            <img src={userData.image} alt="avatar" />
+                        </div>
+                        <h2>{userData.userName}</h2>
+                    </div>
+                    <div className="profileInfo">
+                        <p>Name: {userData.name} </p>
+                        <p>Last Name: {userData.lastName} </p>
+                        <p>Gender: {userData.gender} </p>
+                    </div>
+                </>
+            ) : (
+                <div className="profileLoading">
+                    <h1>Loading...</h1>
+                </div>
+            )}
         </div>
     );
 };

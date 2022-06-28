@@ -24,11 +24,11 @@ const useOpinions = () => {
     }, []);
 
     const addOpinion = (opinion) => {
-        loadOpinions();
+        loadOpinions(opinion);
     };
 
     const removeOpinion = (id) => {
-        loadOpinions();
+        loadOpinions(id);
     };
 
     return { opinions, loading, error, addOpinion, removeOpinion };

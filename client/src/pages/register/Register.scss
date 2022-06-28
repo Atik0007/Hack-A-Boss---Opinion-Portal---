@@ -24,16 +24,43 @@
     
         input{
             width: 100%;
-            height: 40px;
+            height: 30px;
             border-radius: 5px;
             border: 1px solid #ccc;
             padding: 0 10px;
-            margin-bottom: 10px;
+            margin-bottom: 2px;
             &:focus{
                 outline: none;
                 box-shadow: 0 0 5px $secondary-color;
             }
         }
+
+        select{
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 0 10px;
+            margin-bottom: 2px;
+            &:focus{
+                outline: none;
+                box-shadow: 0 0 5px $secondary-color;
+            }
+        }
+        //input type="file"
+        input{
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 0 10px;
+            margin-bottom: 2px;
+            &:focus{
+                outline: none;
+                box-shadow: 0 0 5px $secondary-color;
+            }
+        }
+
     
         .error{
             color: red;

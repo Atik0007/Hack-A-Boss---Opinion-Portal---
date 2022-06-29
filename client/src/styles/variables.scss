@@ -7,21 +7,8 @@ $secondary-color: #FAC213;
 $text-color: #fff;
 $text-color-dark: #D61C4E;
 
-$spacing-small: 0.5rem;
-$spacing-medium: 1rem;
-$spacing-large: 2rem;
 
 
 
-$sm:37.5em;
-$md:48em;
-$lg:64em;
-$xl:75em;
 
-@mixin  breakpoint($point) {
-  @if $point == md {
-    @media (min-width: $md) {
-      @content;
-    }
-  }
-}
+

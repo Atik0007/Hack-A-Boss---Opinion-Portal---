@@ -6,11 +6,12 @@ import { useState } from 'react';
 export const OpinionList = ({
     opinions,
     removeOpinion,
-    updateOpinion,
+    setOpinions,
     loadOpinions,
+    setLoading,
 }) => {
     const [keyword, setKeyword] = useState('');
-    return opinions?.opinions ? (
+    return opinions ? (
         <ul>
             <div className="search">
                 <input
@@ -21,7 +22,7 @@ export const OpinionList = ({
                 ></input>
             </div>
 
-            {opinions.opinions
+            {opinions
                 .filter((opinion) =>
                     opinion.text.toLowerCase().includes(keyword.toLowerCase())
                 )
@@ -30,8 +31,10 @@ export const OpinionList = ({
                         key={opinion.id}
                         opinion={opinion}
                         removeOpinion={removeOpinion}
-                        updateOpinion={updateOpinion}
+                        setOpinions={setOpinions}
+                        opinions={opinions}
                         loadOpinions={loadOpinions}
+                        setLoading={setLoading}
                     />
                 ))}
         </ul>

@@ -5,9 +5,7 @@ import { createOpinion } from '../../services';
 import { AutContext } from '../../utils/AuthContext';
 import { useNavigate, Navigate } from 'react-router-dom';
 
-/* import { useOpinions } from '../../hooks/useOpinions'; */
-
-export const NewOpinion = (/* { addOpinion } */) => {
+export const NewOpinion = () => {
     const navigate = useNavigate();
 
     const [sending, setSending] = useState(false);
@@ -21,10 +19,7 @@ export const NewOpinion = (/* { addOpinion } */) => {
         try {
             setSending(true);
 
-            /* const  = new FormData(e.target); */
-            /*  const data = */ await createOpinion({ token, text, title });
-
-            /* addOpinion(data); */
+            await createOpinion({ token, text, title });
 
             navigate('/');
         } catch (err) {

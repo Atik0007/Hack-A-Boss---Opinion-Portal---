@@ -10,11 +10,9 @@ import { EditPassword } from '../../components/editPassword/EditPassword';
 
 export const ProfilePage = () => {
     const [, setModal] = useModal();
-    const { user /* logout  */ } = useContext(AutContext);
+    const { user } = useContext(AutContext);
     const { token } = useContext(AutContext);
     const [userData, setUserData] = useState(null);
-    /*     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState(''); */
 
     useEffect(() => {
         const loadUserData = async () => {
@@ -28,17 +26,6 @@ export const ProfilePage = () => {
         loadUserData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
-
-    /* const updateUserDataForm = async () => {
-        try {
-            await updateUser({ token, email, password });
-            logout();
-        } catch (err) {
-            console.log(err);
-        }
-    }; */
-
-    console.log(userData);
 
     return (
         <div className="profile">

@@ -11,7 +11,6 @@ export const Register = () => {
     const [lastName, setLastName] = useState('');
     const [gender, setGender] = useState('');
     const [email, setEmail] = useState('');
-    /*  const [image, setImage] = useState(''); */
     const [selectedFile, setSelectedFile] = useState(null);
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -120,6 +119,9 @@ export const Register = () => {
 
                 <input
                     type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
                     onChange={(e) => {
                         setSelectedFile(e.target.files[0]);
                     }}

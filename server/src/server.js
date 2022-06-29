@@ -16,10 +16,6 @@ app.use(cors());
 app.use(fileUpload());
 app.use(express.static(path.join(__dirname, 'uploads')));
 
-const dir = path.join(__dirname, 'uploads');
-
-console.log(dir);
-
 /**
  * #################
  * ## Middlewares ##

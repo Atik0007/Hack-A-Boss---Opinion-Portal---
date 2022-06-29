@@ -59,10 +59,13 @@ personas puedan verlas.
 -   User:
 
     -   id
+    -   userName
     -   name
-    -   lastname
+    -   lastName
+    -   gender
     -   email
     -   password
+    -   image
     -   createdAt
     -   modifiedAt
         ​
@@ -71,6 +74,7 @@ personas puedan verlas.
 
     -   id
     -   idUser
+    -   title
     -   text
     -   likes
     -   dislike

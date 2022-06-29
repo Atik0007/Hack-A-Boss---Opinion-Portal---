@@ -4,7 +4,6 @@ const useOpinions = () => {
     const [opinions, setOpinions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-
     const loadOpinions = async () => {
         try {
             setLoading(true);
@@ -23,15 +22,19 @@ const useOpinions = () => {
         loadOpinions();
     }, []);
 
-    const addOpinion = (opinion) => {
-        loadOpinions(opinion);
-    };
-
     const removeOpinion = (id) => {
-        loadOpinions(id);
+        setOpinions(opinions.filter((opinion) => opinion.id !== id));
     };
 
-    return { opinions, loading, error, addOpinion, removeOpinion };
+    return {
+        opinions,
+        loading,
+        error,
+        removeOpinion,
+        setOpinions,
+        loadOpinions,
+        setLoading,
+    };
 };
 
 export default useOpinions;

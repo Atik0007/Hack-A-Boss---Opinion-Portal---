@@ -2,14 +2,17 @@ import './Opinion.scss';
 import { format } from 'date-fns';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiOutlineEdit, AiFillLike, AiFillDislike } from 'react-icons/ai';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AutContext } from '../../utils/AuthContext';
 import { deleteMyOpinion, addLike, disLike } from '../../services';
 
-export const Opinion = ({ opinion, removeOpinion }) => {
-    const navigate = useNavigate();
-
+export const Opinion = ({
+    opinion,
+    removeOpinion,
+    loadOpinions,
+    setLoading,
+}) => {
     const dateTime = format(new Date(opinion.createdAt), 'yyyy-MM-dd');
 
     const { user, token } = useContext(AutContext);
@@ -18,31 +21,36 @@ export const Opinion = ({ opinion, removeOpinion }) => {
     const deleteOpinion = async (id) => {
         try {
             await deleteMyOpinion({ token, id });
-            if (removeOpinion) {
-                removeOpinion(id);
-            } else {
-                navigate('/');
-            }
+
+            removeOpinion(id);
         } catch (err) {
             setError(err.message);
         }
     };
 
-    const addLikeToOpinion = async (id) => {
+    const addLikeBtn = async (id) => {
+        setLoading(true);
         try {
             await addLike({ token, id });
-            removeOpinion(id);
+
+            loadOpinions();
         } catch (err) {
             setError(err.message);
+        } finally {
+            setLoading(false);
         }
     };
 
-    const disLikeToOpinion = async (id) => {
+    const disLikeBtn = async (id) => {
+        setLoading(true);
         try {
             await disLike({ token, id });
-            removeOpinion(id);
+
+            loadOpinions();
         } catch (err) {
             setError(err.message);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -58,9 +66,8 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                             />
                         </div>
                     )}
-                    <Link to={`/user/${opinion.idUser}`}>
-                        <h3>{opinion.userName}</h3>
-                    </Link>
+
+                    <h3>{opinion.userName}</h3>
                 </div>
 
                 {user && user.id === opinion.idUser ? (
@@ -93,7 +100,7 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                 ) : null}
             </div>
             <div className="containerBody">
-                <h2>CSS Positioning</h2>
+                <h2>{opinion.title}</h2>
                 <p className="text">{opinion.text}</p>
             </div>
 
@@ -102,7 +109,7 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                     <button className="likeBtn">
                         <button
                             className="likeBtn"
-                            onClick={() => addLikeToOpinion(opinion.id)}
+                            onClick={() => addLikeBtn(opinion.id)}
                         >
                             <span className="shadow"></span>
                             <span className="edge"></span>
@@ -115,7 +122,7 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                     <button className="dislikeBtn">
                         <button
                             className="dislikeBtn"
-                            onClick={() => disLikeToOpinion(opinion.id)}
+                            onClick={() => disLikeBtn(opinion.id)}
                         >
                             <span className="shadow"></span>
                             <span className="edge"></span>

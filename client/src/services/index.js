@@ -7,7 +7,7 @@ export const getAllOpinions = async () => {
         throw new Error(json.message);
     }
 
-    return json.data;
+    return json.data.opinions;
 };
 
 export const getOpinion = async (id) => {
@@ -191,7 +191,8 @@ export const addLike = async ({ token, id }) => {
     if (json.status === 'Error') {
         throw new Error(json.message);
     }
-    return json.data;
+
+    return json;
 };
 
 export const disLike = async ({ token, id }) => {
@@ -211,5 +212,5 @@ export const disLike = async ({ token, id }) => {
     if (json.status === 'Error') {
         throw new Error(json.message);
     }
-    return json.data;
+    return json;
 };

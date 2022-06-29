@@ -8,8 +8,6 @@ import { useContext, useState, useRef } from 'react';
 import { AutContext } from '../../utils/AuthContext';
 import './Header.scss';
 
-/* import { Auth } from '../auth/Auth'; */
-
 export const Header = () => {
     const { user, logout } = useContext(AutContext);
 

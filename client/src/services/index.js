@@ -116,7 +116,7 @@ export const updateUser = async ({ token, email, password }) => {
     if (json.status === 'Error') {
         throw new Error(json.message);
     }
-    return json.data.user;
+    return json;
 };
 
 export const createOpinion = async ({ token, text, title }) => {

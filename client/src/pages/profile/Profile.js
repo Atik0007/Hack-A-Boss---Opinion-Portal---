@@ -1,9 +1,15 @@
 import './Profile.scss';
 import { useContext, useEffect, useState } from 'react';
+import { AiOutlineEdit } from 'react-icons/ai';
 import { AutContext } from '../../utils/AuthContext';
 import { getMyData /* updateUser  */ } from '../../services';
 
+import { useModal } from '../../utils/ModalContext';
+import { EditEmail } from '../../components/editemail/EditEmail';
+import { EditPassword } from '../../components/editPassword/EditPassword';
+
 export const ProfilePage = () => {
+    const [, setModal] = useModal();
     const { user /* logout  */ } = useContext(AutContext);
     const { token } = useContext(AutContext);
     const [userData, setUserData] = useState(null);
@@ -40,7 +46,12 @@ export const ProfilePage = () => {
                 <>
                     <div className="profileHeader">
                         <div className="profileHeaderAvatar">
-                            <img src={userData.image} alt="avatar" />
+                            {userData.image && (
+                                <img
+                                    src={require(`../../../../server/src/uploads/${userData.image}`)}
+                                    alt="avatar"
+                                />
+                            )}
                         </div>
                         <h2>{userData.userName}</h2>
                     </div>
@@ -48,6 +59,36 @@ export const ProfilePage = () => {
                         <p>Name: {userData.name} </p>
                         <p>Last Name: {userData.lastName} </p>
                         <p>Gender: {userData.gender} </p>
+                        <p>
+                            Email:
+                            <button
+                                className="editBtn"
+                                onClick={() => setModal(<EditEmail />)}
+                            >
+                                <button className="editBtn">
+                                    <span className="shadow"></span>
+                                    <span className="edge"></span>
+                                    <span className="front text">
+                                        <AiOutlineEdit />
+                                    </span>
+                                </button>
+                            </button>
+                        </p>
+                        <p>
+                            Password:
+                            <button
+                                className="editBtn"
+                                onClick={() => setModal(<EditPassword />)}
+                            >
+                                <button className="editBtn">
+                                    <span className="shadow"></span>
+                                    <span className="edge"></span>
+                                    <span className="front text">
+                                        <AiOutlineEdit />
+                                    </span>
+                                </button>
+                            </button>
+                        </p>
                     </div>
                 </>
             ) : (

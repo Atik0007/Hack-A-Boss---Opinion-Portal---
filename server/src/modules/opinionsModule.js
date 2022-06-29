@@ -14,7 +14,7 @@ const opinions = async () => {
                 idUser INTEGER ,
                 FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
                 title VARCHAR(50) NOT NULL,
-                text VARCHAR(280) NOT NULL,
+                text VARCHAR(32765) NOT NULL,
                 likes INTEGER DEFAULT 0,
                 dislikes INTEGER DEFAULT 0,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,

@@ -6,6 +6,7 @@ const fileUpload = require('express-fileupload');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 
@@ -13,7 +14,11 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors());
 app.use(fileUpload());
-app.use(express.static('uploads'));
+app.use(express.static(path.join(__dirname, 'uploads')));
+
+const dir = path.join(__dirname, 'uploads');
+
+console.log(dir);
 
 /**
  * #################

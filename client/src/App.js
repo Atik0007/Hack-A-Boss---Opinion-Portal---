@@ -1,5 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
+import Modal from './components/modal/Modal';
+import { useModal } from './utils/ModalContext';
+
 import { Header } from './components/header/Header';
 import { Footer } from './components/footer/Footer';
 import { NewOpinion } from './pages/newOpinion/NewOpinion';
@@ -14,6 +17,7 @@ import { EditOpinion } from './pages/editOpinion/EditOpinion';
 import { ProfilePage } from './pages/profile/Profile';
 
 function App() {
+    const [modal] = useModal();
     return (
         <main className="App">
             <Header />
@@ -28,6 +32,8 @@ function App() {
                 <Route path="/edit/:id" element={<EditOpinion />} />
                 <Route path="*" element={<HomePage />} />
             </Routes>
+            {modal && <Modal>{modal}</Modal>}
+
             <Footer />
         </main>
     );

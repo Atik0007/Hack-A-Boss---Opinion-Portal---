@@ -49,24 +49,50 @@ export const Opinion = ({ opinion, removeOpinion }) => {
     return (
         <article className="blogPost">
             <div className="blogHeader">
-                {opinion.image && (
-                    <div className="imgPod">
-                        <img
-                            src={`http://localhost:4000/${opinion.image}`}
-                            alt="avatar"
-                        />
-                    </div>
-                )}
-                <Link to={`/user/${opinion.idUser}`}>
-                    <h3>
-                        {opinion.name} {opinion.lastName}
-                    </h3>
-                </Link>
+                <div className="headerRight">
+                    {opinion.image && (
+                        <div className="imgPod">
+                            <img
+                                src={require(`../../../../server/src/uploads/${opinion.image}`)}
+                                alt="avatar"
+                            />
+                        </div>
+                    )}
+                    <Link to={`/user/${opinion.idUser}`}>
+                        <h3>{opinion.userName}</h3>
+                    </Link>
+                </div>
+
+                {user && user.id === opinion.idUser ? (
+                    <section className="rightSide">
+                        <button className="deleteBtn">
+                            <button
+                                className="deleteBtn"
+                                onClick={() => deleteOpinion(opinion.id)}
+                            >
+                                <span className="shadow"></span>
+                                <span className="edge"></span>
+                                <span className="front text">
+                                    <RiDeleteBin5Fill />
+                                </span>
+                            </button>
+                        </button>
+                        <button className="editBtn">
+                            <Link to={`/edit/${opinion.id}`}>
+                                <button className="editBtn">
+                                    <span className="shadow"></span>
+                                    <span className="edge"></span>
+                                    <span className="front text">
+                                        <AiOutlineEdit />
+                                    </span>
+                                </button>
+                            </Link>
+                        </button>
+                        {error ? <p>{error}</p> : null}
+                    </section>
+                ) : null}
             </div>
             <div className="containerBody">
-                <time dateTime={dateTime}>
-                    {format(new Date(opinion.createdAt), 'hh:mm - dd/MM/yyyy')}
-                </time>
                 <h2>CSS Positioning</h2>
                 <p className="text">{opinion.text}</p>
             </div>
@@ -100,34 +126,9 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                     </button>
                     <p>{opinion.dislikes}</p>
                 </section>
-                {user && user.id === opinion.idUser ? (
-                    <section className="rightSide">
-                        <button className="deleteBtn">
-                            <button
-                                className="deleteBtn"
-                                onClick={() => deleteOpinion(opinion.id)}
-                            >
-                                <span className="shadow"></span>
-                                <span className="edge"></span>
-                                <span className="front text">
-                                    <RiDeleteBin5Fill />
-                                </span>
-                            </button>
-                        </button>
-                        <button className="editBtn">
-                            <Link to={`/edit/${opinion.id}`}>
-                                <button className="editBtn">
-                                    <span className="shadow"></span>
-                                    <span className="edge"></span>
-                                    <span className="front text">
-                                        <AiOutlineEdit />
-                                    </span>
-                                </button>
-                            </Link>
-                        </button>
-                        {error ? <p>{error}</p> : null}
-                    </section>
-                ) : null}
+                <time className="time" dateTime={dateTime}>
+                    {format(new Date(opinion.createdAt), 'hh:mm - dd/MM/yyyy')}
+                </time>
             </footer>
         </article>
     );

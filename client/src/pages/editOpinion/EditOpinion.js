@@ -1,14 +1,18 @@
 import './EditOpinion.scss';
+
 import { useState, useContext } from 'react';
+import { useNavigate, Navigate, useParams } from 'react-router-dom';
+
 import { updateMyOpinion } from '../../services';
 import { AutContext } from '../../utils/AuthContext';
-import { useNavigate, Navigate, useParams } from 'react-router-dom';
 
 export const EditOpinion = () => {
     const params = useParams();
+
     const navigate = useNavigate();
 
     const { token } = useContext(AutContext);
+
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [error, setError] = useState('');

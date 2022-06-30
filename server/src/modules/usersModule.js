@@ -23,7 +23,7 @@ const user = async () => {
         )
     `);
 
-        console.log('**** Created table successfully ****');
+        console.log('**** Created users table successfully ****');
     } catch (err) {
         console.log(err);
     } finally {

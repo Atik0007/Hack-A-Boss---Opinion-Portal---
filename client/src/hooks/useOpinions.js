@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { getAllOpinions } from '../services';
 const useOpinions = () => {
     const [opinions, setOpinions] = useState([]);
@@ -33,7 +34,6 @@ const useOpinions = () => {
         removeOpinion,
         setOpinions,
         loadOpinions,
-        setLoading,
     };
 };
 

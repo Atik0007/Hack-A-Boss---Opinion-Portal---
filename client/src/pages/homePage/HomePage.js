@@ -9,7 +9,6 @@ export const HomePage = () => {
         removeOpinion,
         setOpinions,
         loadOpinions,
-        setLoading,
     } = useOpinions();
 
     if (loading) return <p>Loading...</p>;
@@ -22,7 +21,6 @@ export const HomePage = () => {
                 removeOpinion={removeOpinion}
                 setOpinions={setOpinions}
                 loadOpinions={loadOpinions}
-                setLoading={setLoading}
             />
         </section>
     );

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { getOpinion } from '../services';
 
 export const useOpinion = (id) => {

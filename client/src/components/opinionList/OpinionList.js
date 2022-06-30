@@ -8,7 +8,6 @@ export const OpinionList = ({
     removeOpinion,
     setOpinions,
     loadOpinions,
-    setLoading,
 }) => {
     const [keyword, setKeyword] = useState('');
     return opinions ? (
@@ -34,7 +33,6 @@ export const OpinionList = ({
                         setOpinions={setOpinions}
                         opinions={opinions}
                         loadOpinions={loadOpinions}
-                        setLoading={setLoading}
                     />
                 ))}
         </ul>

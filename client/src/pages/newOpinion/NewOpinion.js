@@ -1,9 +1,10 @@
 import './NewOpinion.scss';
 
 import { useState, useContext } from 'react';
+import { useNavigate, Navigate } from 'react-router-dom';
+
 import { createOpinion } from '../../services';
 import { AutContext } from '../../utils/AuthContext';
-import { useNavigate, Navigate } from 'react-router-dom';
 
 export const NewOpinion = () => {
     const navigate = useNavigate();

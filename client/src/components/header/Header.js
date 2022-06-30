@@ -1,12 +1,13 @@
-import logo from './img/logo.svg';
-
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { CgProfile } from 'react-icons/cg';
+import './Header.scss';
 
 import { Link } from 'react-router-dom';
 import { useContext, useState, useRef } from 'react';
+
+import logo from './img/logo.svg';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { CgProfile } from 'react-icons/cg';
+
 import { AutContext } from '../../utils/AuthContext';
-import './Header.scss';
 
 export const Header = () => {
     const { user, logout } = useContext(AutContext);

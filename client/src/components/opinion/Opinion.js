@@ -1,19 +1,19 @@
 import './Opinion.scss';
+
 import { format } from 'date-fns';
-import { RiDeleteBin5Fill } from 'react-icons/ri';
-import { AiOutlineEdit, AiFillLike, AiFillDislike } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
+
+import { AiOutlineEdit, AiFillLike, AiFillDislike } from 'react-icons/ai';
+import { RiDeleteBin5Fill } from 'react-icons/ri';
+
 import { AutContext } from '../../utils/AuthContext';
 import { deleteMyOpinion, addLike, disLike } from '../../services';
 
-export const Opinion = ({
-    opinion,
-    removeOpinion,
-    loadOpinions,
-    setLoading,
-}) => {
+export const Opinion = ({ opinion, removeOpinion, loadOpinions }) => {
     const dateTime = format(new Date(opinion.createdAt), 'yyyy-MM-dd');
+    const navigate = useNavigate();
 
     const { user, token } = useContext(AutContext);
 
@@ -22,6 +22,7 @@ export const Opinion = ({
         try {
             await deleteMyOpinion({ token, id });
 
+            navigate('/');
             removeOpinion(id);
         } catch (err) {
             setError(err.message);
@@ -29,28 +30,22 @@ export const Opinion = ({
     };
 
     const addLikeBtn = async (id) => {
-        setLoading(true);
         try {
             await addLike({ token, id });
 
             loadOpinions();
         } catch (err) {
             setError(err.message);
-        } finally {
-            setLoading(false);
         }
     };
 
     const disLikeBtn = async (id) => {
-        setLoading(true);
         try {
             await disLike({ token, id });
 
             loadOpinions();
         } catch (err) {
             setError(err.message);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -100,7 +95,9 @@ export const Opinion = ({
                 ) : null}
             </div>
             <div className="containerBody">
-                <h2>{opinion.title}</h2>
+                <Link to={`/opinion/${opinion.id}`}>
+                    <h2>{opinion.title}</h2>
+                </Link>
                 <p className="text">{opinion.text}</p>
             </div>
 

@@ -11,8 +11,6 @@ const newUser = async (req, res, next) => {
     try {
         const { userName, email, password, name, lastName, gender } = req.body;
 
-        console.log(req.body);
-
         // This is a validation to check if the user has sent the email and password. If not, it will  throw an error.
         if (!userName || !email || !password || !name || !lastName || !gender) {
             throw generateError(400, 'Missing parameters');

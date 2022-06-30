@@ -1,6 +1,7 @@
 import './OpinionPage.scss';
 
 import { useParams } from 'react-router-dom';
+
 import { Opinion } from '../../components/opinion/Opinion';
 import { useOpinion } from '../../hooks/useOpinion';
 
@@ -14,7 +15,6 @@ export const OpinionPage = () => {
 
     return (
         <section className="opinion">
-            <h1>Opinion</h1>
             <Opinion opinion={opinion.opinion} />
         </section>
     );

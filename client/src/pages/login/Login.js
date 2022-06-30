@@ -1,11 +1,11 @@
 import './Login.scss';
 
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 import { loginUser } from '../../services';
 import { AutContext } from '../../utils/AuthContext';
 
-import { Link } from 'react-router-dom';
 export const Login = () => {
     const navigate = useNavigate();
 

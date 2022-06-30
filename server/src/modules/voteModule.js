@@ -21,7 +21,7 @@ const vote = async () => {
             )
         `);
 
-        console.log('**** Created table successfully ****');
+        console.log('**** Created vote table successfully ****');
     } catch (err) {
         console.log(err);
     } finally {

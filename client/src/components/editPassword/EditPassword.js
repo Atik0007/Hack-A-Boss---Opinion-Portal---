@@ -1,9 +1,10 @@
 import './EditPassword.scss';
 
-import { updateUser } from '../../services/index';
-import { AutContext } from '../../utils/AuthContext';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { updateUser } from '../../services/index';
+import { AutContext } from '../../utils/AuthContext';
 import { useModal } from '../../utils/ModalContext';
 
 export const EditPassword = () => {

@@ -91,7 +91,7 @@ export const Opinion = ({ opinion, removeOpinion }) => {
 
                 {user && user.id === opinion.idUser ? (
                     <section className="rightSide">
-                        <button className="deleteBtn">
+                        <dev className="deleteBtn">
                             <button
                                 className="deleteBtn"
                                 onClick={() => deleteOpinion(opinion.id)}
@@ -102,8 +102,8 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                                     <RiDeleteBin5Fill />
                                 </span>
                             </button>
-                        </button>
-                        <button className="editBtn">
+                        </dev>
+                        <dev className="editBtn">
                             <Link to={`/edit/${opinion.id}`}>
                                 <button className="editBtn">
                                     <span className="shadow"></span>
@@ -113,7 +113,7 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                                     </span>
                                 </button>
                             </Link>
-                        </button>
+                        </dev>
                         {error ? <p>{error}</p> : null}
                     </section>
                 ) : null}
@@ -127,7 +127,7 @@ export const Opinion = ({ opinion, removeOpinion }) => {
 
             <footer>
                 <section className="leftSide">
-                    <button className="likeBtn">
+                    <dev className="likeBtn">
                         <button
                             disabled={loading}
                             className="likeBtn"
@@ -139,9 +139,9 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                                 <AiFillLike />
                             </span>
                         </button>
-                    </button>
+                    </dev>
                     <p>{likes}</p>
-                    <button className="dislikeBtn">
+                    <dev className="dislikeBtn">
                         <button
                             disabled={loading}
                             className="dislikeBtn"
@@ -153,7 +153,7 @@ export const Opinion = ({ opinion, removeOpinion }) => {
                                 <AiFillDislike />
                             </span>
                         </button>
-                    </button>
+                    </dev>
                     <p>{dislike}</p>
                 </section>
                 <time className="time" dateTime={dateTime}>

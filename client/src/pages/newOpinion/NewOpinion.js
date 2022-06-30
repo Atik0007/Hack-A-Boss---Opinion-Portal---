@@ -49,14 +49,15 @@ export const NewOpinion = () => {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
-
-                <button className="button">
-                    <span className="shadow"></span>
-                    <span className="edge"></span>
-                    <span className="front text">
-                        {sending ? 'Loading...' : 'Create Opinion'}
-                    </span>
-                </button>
+                <dev className="button">
+                    <button className="button">
+                        <span className="shadow"></span>
+                        <span className="edge"></span>
+                        <span className="front text">
+                            {sending ? 'Loading...' : 'Create Opinion'}
+                        </span>
+                    </button>
+                </dev>
 
                 {sending ? <p>Sending...</p> : null}
             </form>

@@ -60,17 +60,21 @@ export const EditEmail = () => {
                 />
 
                 {loading ? (
-                    <button className="button">
-                        <span className="shadow"></span>
-                        <span className="edge"></span>
-                        <span className="front text">loading</span>
-                    </button>
+                    <dev className="button">
+                        <button className="button">
+                            <span className="shadow"></span>
+                            <span className="edge"></span>
+                            <span className="front text">loading</span>
+                        </button>
+                    </dev>
                 ) : (
-                    <button className="button">
-                        <span className="shadow"></span>
-                        <span className="edge"></span>
-                        <span className="front text">update</span>
-                    </button>
+                    <dev className="button">
+                        <button className="button">
+                            <span className="shadow"></span>
+                            <span className="edge"></span>
+                            <span className="front text">update</span>
+                        </button>
+                    </dev>
                 )}
             </form>
             {error ? <p className="error">{error}</p> : null}

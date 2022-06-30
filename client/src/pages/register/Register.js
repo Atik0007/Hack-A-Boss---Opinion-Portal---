@@ -126,13 +126,13 @@ export const Register = () => {
                         setSelectedFile(e.target.files[0]);
                     }}
                 />
-                <button className="button">
+                <dev className="button">
                     <button className="button">
                         <span className="shadow"></span>
                         <span className="edge"></span>
                         <span className="front text">Register</span>
                     </button>
-                </button>
+                </dev>
                 {error ? <p>{error}</p> : null}
             </form>
         </section>

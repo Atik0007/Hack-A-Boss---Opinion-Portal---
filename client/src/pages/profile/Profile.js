@@ -48,7 +48,7 @@ export const ProfilePage = () => {
                         <p>Gender: {userData.gender} </p>
                         <p>
                             Email:
-                            <button
+                            <dev
                                 className="editBtn"
                                 onClick={() => setModal(<EditEmail />)}
                             >
@@ -59,11 +59,11 @@ export const ProfilePage = () => {
                                         <AiOutlineEdit />
                                     </span>
                                 </button>
-                            </button>
+                            </dev>
                         </p>
                         <p>
                             Password:
-                            <button
+                            <dev
                                 className="editBtn"
                                 onClick={() => setModal(<EditPassword />)}
                             >
@@ -74,7 +74,7 @@ export const ProfilePage = () => {
                                         <AiOutlineEdit />
                                     </span>
                                 </button>
-                            </button>
+                            </dev>
                         </p>
                     </div>
                 </>

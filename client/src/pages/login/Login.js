@@ -54,7 +54,7 @@ export const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className="button">
+                <dev className="button">
                     <button className="button">
                         <span className="shadow"></span>
                         <span className="edge"></span>
@@ -63,7 +63,7 @@ export const Login = () => {
                             {status === 'Loading' ? 'Loading...' : 'Login'}
                         </span>
                     </button>
-                </button>
+                </dev>
 
                 {status && <p className="error">{status}</p>}
 
@@ -73,7 +73,7 @@ export const Login = () => {
             <div className="register">
                 <p>Join the community</p>
 
-                <button className="button">
+                <dev className="button">
                     <Link to="/register">
                         <button className="button">
                             <span className="shadow"></span>
@@ -83,7 +83,7 @@ export const Login = () => {
                             </span>
                         </button>
                     </Link>
-                </button>
+                </dev>
             </div>
         </section>
     );

@@ -3,9 +3,8 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import { useContext, useState, useRef } from 'react';
 
-import logo from './img/logo.svg';
+import Logo from './img/logo.svg';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { CgProfile } from 'react-icons/cg';
 
 import { AutContext } from '../../utils/AuthContext';
 
@@ -24,12 +23,12 @@ export const Header = () => {
     return (
         <header className="header">
             <Link to="/">
-                <img src={logo} alt="logo" />
+                <img src={Logo} alt="logo" />
             </Link>
             <nav ref={navRef} className="navMenu">
                 {user ? (
                     <>
-                        <button className="button">
+                        <dev className="button">
                             <button
                                 className="button"
                                 onClick={() => {
@@ -43,8 +42,8 @@ export const Header = () => {
                                     <span className="front text">+</span>
                                 </Link>
                             </button>
-                        </button>
-                        <button className="button">
+                        </dev>
+                        <dev className="button">
                             <button
                                 className="button"
                                 onClick={() => {
@@ -55,13 +54,11 @@ export const Header = () => {
                                 <Link to="/profile">
                                     <span className="shadow"></span>
                                     <span className="edge"></span>
-                                    <span className="front text">
-                                        <CgProfile />
-                                    </span>
+                                    <span className="front text">🧑‍💻</span>
                                 </Link>
                             </button>
-                        </button>
-                        <button className="button">
+                        </dev>
+                        <dev className="button">
                             <button
                                 className="button"
                                 onClick={() => {
@@ -74,10 +71,10 @@ export const Header = () => {
                                 <span className="edge"></span>
                                 <span className="front text">Logout</span>
                             </button>
-                        </button>
+                        </dev>
                     </>
                 ) : (
-                    <button className="button">
+                    <dev className="button">
                         <button
                             className="button"
                             onClick={() => {
@@ -91,11 +88,11 @@ export const Header = () => {
                                 <span className="front text">Login</span>
                             </Link>
                         </button>
-                    </button>
+                    </dev>
                 )}
             </nav>
             <>
-                <button className="btn button" onClick={handleClick}>
+                <dev className="btn button" onClick={handleClick}>
                     {burger ? (
                         <button className="button">
                             <span className="shadow"></span>
@@ -113,7 +110,7 @@ export const Header = () => {
                             </span>
                         </button>
                     )}
-                </button>
+                </dev>
             </>
         </header>
     );

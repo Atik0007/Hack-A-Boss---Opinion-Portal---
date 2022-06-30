@@ -51,12 +51,13 @@ export const EditPassword = () => {
                     value={passwordConfirm}
                     onChange={(e) => setPasswordConfirm(e.target.value)}
                 />
-
-                <button className="button">
-                    <span className="shadow"></span>
-                    <span className="edge"></span>
-                    <span className="front text">update</span>
-                </button>
+                <div className="button">
+                    <button className="button">
+                        <span className="shadow"></span>
+                        <span className="edge"></span>
+                        <span className="front text">update</span>
+                    </button>
+                </div>
             </form>
             {error ? <p className="error">{error}</p> : null}
         </section>

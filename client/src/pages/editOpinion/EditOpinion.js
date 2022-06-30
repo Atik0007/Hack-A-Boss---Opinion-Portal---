@@ -45,12 +45,13 @@ export const EditOpinion = () => {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
-
-                <button className="button">
-                    <span className="shadow"></span>
-                    <span className="edge"></span>
-                    <span className="front text">update</span>
-                </button>
+                <dev className="button">
+                    <button className="button">
+                        <span className="shadow"></span>
+                        <span className="edge"></span>
+                        <span className="front text">update</span>
+                    </button>
+                </dev>
             </form>
             {error ? <p>{error}</p> : null}
         </section>

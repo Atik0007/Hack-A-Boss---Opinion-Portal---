@@ -263,6 +263,14 @@
         font-size: 4vmin;
         color: #333;
       }
+      @media (min-width: 768px) {
+        h2 {
+          font-size: 4vmin;
+        }
+        p {
+          font-size: 3.5vmin;
+        }
+      }
     }
     
     //delete button

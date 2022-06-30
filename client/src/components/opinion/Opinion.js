@@ -11,9 +11,18 @@ import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AutContext } from '../../utils/AuthContext';
 import { deleteMyOpinion, addLike, disLike } from '../../services';
 
-export const Opinion = ({ opinion, removeOpinion, loadOpinions }) => {
+export const Opinion = ({
+    opinion,
+    removeOpinion,
+    loadOpinions,
+    setOpinions,
+}) => {
+    console.log(opinion);
     const dateTime = format(new Date(opinion.createdAt), 'yyyy-MM-dd');
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [likes, setLikes] = useState(opinion.likes);
+    const [dislike, setDislike] = useState(opinion.dislikes);
 
     const { user, token } = useContext(AutContext);
 
@@ -30,22 +39,42 @@ export const Opinion = ({ opinion, removeOpinion, loadOpinions }) => {
     };
 
     const addLikeBtn = async (id) => {
+        setLoading(true);
         try {
-            await addLike({ token, id });
+            const data = await addLike({ token, id });
 
-            loadOpinions();
+            if (data.message === 'Like inserted') {
+                setLikes(likes + 1);
+            } else if (data.message === 'Like deleted') {
+                setLikes(likes - 1);
+            } else {
+                setLikes(likes + 1);
+                setDislike(dislike - 1);
+            }
         } catch (err) {
             setError(err.message);
+        } finally {
+            setLoading(false);
         }
     };
 
     const disLikeBtn = async (id) => {
+        setLoading(true);
         try {
-            await disLike({ token, id });
+            const data = await disLike({ token, id });
 
-            loadOpinions();
+            if (data.message === 'Dislike inserted') {
+                setDislike(dislike + 1);
+            } else if (data.message === 'Dislike deleted') {
+                setDislike(dislike - 1);
+            } else {
+                setLikes(likes - 1);
+                setDislike(dislike + 1);
+            }
         } catch (err) {
             setError(err.message);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -105,6 +134,7 @@ export const Opinion = ({ opinion, removeOpinion, loadOpinions }) => {
                 <section className="leftSide">
                     <button className="likeBtn">
                         <button
+                            disabled={loading}
                             className="likeBtn"
                             onClick={() => addLikeBtn(opinion.id)}
                         >
@@ -115,9 +145,10 @@ export const Opinion = ({ opinion, removeOpinion, loadOpinions }) => {
                             </span>
                         </button>
                     </button>
-                    <p>{opinion.likes}</p>
+                    <p>{likes}</p>
                     <button className="dislikeBtn">
                         <button
+                            disabled={loading}
                             className="dislikeBtn"
                             onClick={() => disLikeBtn(opinion.id)}
                         >
@@ -128,7 +159,7 @@ export const Opinion = ({ opinion, removeOpinion, loadOpinions }) => {
                             </span>
                         </button>
                     </button>
-                    <p>{opinion.dislikes}</p>
+                    <p>{dislike}</p>
                 </section>
                 <time className="time" dateTime={dateTime}>
                     {format(new Date(opinion.createdAt), 'hh:mm - dd/MM/yyyy')}

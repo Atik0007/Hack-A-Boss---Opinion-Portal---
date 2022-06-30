@@ -134,8 +134,6 @@ export const createOpinion = async ({ token, text, title }) => {
 
     const json = await response.json();
 
-    console.log(json);
-
     if (json.status === 'Error') {
         throw new Error(json.message);
     }

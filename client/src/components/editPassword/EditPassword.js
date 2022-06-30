@@ -39,14 +39,14 @@ export const EditPassword = () => {
                 <h1>Edit Password</h1>
                 <input
                     placeholder="Password"
-                    type="text"
+                    type="password"
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <input
                     placeholder="Confirm Password"
-                    type="text"
+                    type="password"
                     id="passwordConfirm"
                     value={passwordConfirm}
                     onChange={(e) => setPasswordConfirm(e.target.value)}

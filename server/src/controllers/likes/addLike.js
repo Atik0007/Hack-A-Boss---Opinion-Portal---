@@ -10,7 +10,7 @@ const addLikes = async (req, res, next) => {
         if (value === true) {
             value = 'Like inserted';
         } else if (value === false) {
-            value = 'Like removed';
+            value = 'Like deleted';
         } else {
             value = 'Like added';
         }

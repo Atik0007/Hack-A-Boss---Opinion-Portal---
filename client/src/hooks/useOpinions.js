@@ -5,21 +5,20 @@ const useOpinions = () => {
     const [opinions, setOpinions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const loadOpinions = async () => {
-        try {
-            setLoading(true);
-
-            const data = await getAllOpinions();
-
-            setOpinions(data);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     useEffect(() => {
+        const loadOpinions = async () => {
+            try {
+                setLoading(true);
+
+                const data = await getAllOpinions();
+
+                setOpinions(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
         loadOpinions();
     }, []);
 
@@ -32,8 +31,6 @@ const useOpinions = () => {
         loading,
         error,
         removeOpinion,
-        setOpinions,
-        loadOpinions,
     };
 };
 

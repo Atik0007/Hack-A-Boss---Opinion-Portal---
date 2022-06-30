@@ -11,12 +11,7 @@ import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AutContext } from '../../utils/AuthContext';
 import { deleteMyOpinion, addLike, disLike } from '../../services';
 
-export const Opinion = ({
-    opinion,
-    removeOpinion,
-    loadOpinions,
-    setOpinions,
-}) => {
+export const Opinion = ({ opinion, removeOpinion }) => {
     console.log(opinion);
     const dateTime = format(new Date(opinion.createdAt), 'yyyy-MM-dd');
     const navigate = useNavigate();

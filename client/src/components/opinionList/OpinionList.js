@@ -3,12 +3,7 @@ import './OpinionList.scss';
 import { Opinion } from '../opinion/Opinion';
 import { useState } from 'react';
 
-export const OpinionList = ({
-    opinions,
-    removeOpinion,
-    setOpinions,
-    loadOpinions,
-}) => {
+export const OpinionList = ({ opinions, removeOpinion }) => {
     const [keyword, setKeyword] = useState('');
     return opinions ? (
         <ul>
@@ -30,9 +25,6 @@ export const OpinionList = ({
                         key={opinion.id}
                         opinion={opinion}
                         removeOpinion={removeOpinion}
-                        setOpinions={setOpinions}
-                        opinions={opinions}
-                        loadOpinions={loadOpinions}
                     />
                 ))}
         </ul>

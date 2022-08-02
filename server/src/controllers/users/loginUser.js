@@ -34,7 +34,7 @@ const loginUser = async (req, res, next) => {
         });
 
         res.send({
-            status: 'ok',
+            status: 'Ok',
             data: {
                 token,
             },

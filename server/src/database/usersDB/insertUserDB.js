@@ -38,12 +38,10 @@ const insertUserDB = async (
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const [idUser] = await connection.query(
+        await connection.query(
             'INSERT INTO users (userName, email, password, name, lastName, gender, image) VALUES (?, ?, ?, ?, ?, ?, ? )',
             [userName, email, hashedPassword, name, lastName, gender, image]
         );
-
-        return idUser.insertId;
     } finally {
         if (connection) {
             connection.release();

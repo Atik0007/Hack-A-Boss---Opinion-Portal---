@@ -8,13 +8,13 @@ const updateOpinion = async (req, res, next) => {
 
         // Checking if the text is empty or if the text is longer than 500 characters or if the text is less than 0 characters.
         if (!title || !text || text.length < 0) {
-            throw generateError('Invalid text', 400);
+            throw generateError(400, 'Invalid text');
         }
 
         await updateOpinionDB(req.idUser, idOpinion, text, title);
         res.send({
             status: 'Ok',
-            message: `Opinion user id : ${req.idUser} updated`,
+            message: `Opinion updated`,
         });
     } catch (err) {
         next(err);

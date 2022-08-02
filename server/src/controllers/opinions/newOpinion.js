@@ -15,11 +15,7 @@ const newOpinion = async (req, res, next) => {
 
         res.send({
             status: 'Ok',
-            data: {
-                message: 'Opinion created',
-                idUser: req.idUser,
-                text,
-            },
+            message: 'Opinion created',
         });
     } catch (err) {
         next(err);

@@ -34,7 +34,7 @@ const newUser = async (req, res, next) => {
             await sharpImg.toFile(imgPath);
         }
 
-        const idUser = await insertUserDB(
+        await insertUserDB(
             userName,
             email,
             password,
@@ -45,8 +45,8 @@ const newUser = async (req, res, next) => {
         );
 
         res.send({
-            status: 'ok',
-            message: `User id : ${idUser} created successfully`,
+            status: 'Ok',
+            message: `User created successfully`,
         });
     } catch (error) {
         next(error);

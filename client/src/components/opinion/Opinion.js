@@ -12,7 +12,6 @@ import { AutContext } from '../../utils/AuthContext';
 import { deleteMyOpinion, addLike, disLike } from '../../services';
 
 export const Opinion = ({ opinion, removeOpinion }) => {
-    console.log(opinion);
     const dateTime = format(new Date(opinion.createdAt), 'yyyy-MM-dd');
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);

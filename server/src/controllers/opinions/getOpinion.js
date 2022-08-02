@@ -7,7 +7,7 @@ const getOpinion = async (req, res, next) => {
         const opinion = await selectOpinionsByIdDB(idOpinion);
 
         res.send({
-            status: 'Success',
+            status: 'Ok',
             data: {
                 opinion,
             },

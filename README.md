@@ -43,19 +43,10 @@ personas puedan verlas.
     ​
 -   Ejecutar npm run initDB para crear las tablas necesarias en la base de datos anteriormente creada.
     ​
--   Ejecutar npm run dev o npm start para lanzar el servidor.
+-   Ejecutar npm run dev o npm start para lanzar el servidor.​ ​
     ​
--   Instalar npm i -D nodemon prettier eslint morgan Que son dependencias de desarrollo.
-    ​
--   Instalar npm i express dotenv mysql2 bcrypt jsonwebtoken
-    ​
--   Crear token de usuarios.
-    ​
-
 ## Entidades
-
 ​
-
 -   User:
 
     -   id

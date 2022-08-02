@@ -9,21 +9,21 @@ const updatePassword = async (req, res, next) => {
 
             res.send({
                 status: 'Ok',
-                message: `Email and Password id: ${req.idUser} updated successfully`,
+                message: `Email and Password updated successfully`,
             });
         } else if (email) {
             await updatePasswordDB(req.idUser, email, null);
 
             res.send({
                 status: 'Ok',
-                message: `Email id: ${req.idUser} updated successfully`,
+                message: `Email updated successfully`,
             });
         } else if (password) {
             await updatePasswordDB(req.idUser, null, password);
 
             res.send({
                 status: 'Ok',
-                message: `Password id: ${req.idUser} updated successfully`,
+                message: `Password updated successfully`,
             });
         }
     } catch (err) {

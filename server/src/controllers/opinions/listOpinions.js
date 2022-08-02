@@ -6,7 +6,7 @@ const listOpinions = async (req, res, next) => {
         const opinions = await selectAllOpinionsDB(keyword);
 
         res.send({
-            status: 'Success',
+            status: 'Ok',
             data: {
                 opinions,
             },

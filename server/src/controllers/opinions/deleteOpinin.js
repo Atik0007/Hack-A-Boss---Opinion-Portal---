@@ -7,8 +7,8 @@ const deleteOpinion = async (req, res, next) => {
         await deleteOpinionDB(req.idUser, idOpinion);
 
         res.send({
-            status: 'Success',
-            message: `Opinion id : ${idOpinion} of user id: ${req.idUser} deleted`,
+            status: 'Ok',
+            message: `Opinion deleted`,
         });
     } catch (err) {
         next(err);
